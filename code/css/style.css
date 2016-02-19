@@ -46,3 +46,7 @@ nav .brand-logo {
 .table-hover-browsers tbody tr:hover td {
   background-color: #ffe0b2;
 }
+
+#custButton {
+	width: 200px;	
+}

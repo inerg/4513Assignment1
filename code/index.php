@@ -1,4 +1,20 @@
 <!DOCTYPE html>
+
+<?php
+	require_once('lib/helpers/visits-setup.inc.php');
+	
+	$gate = new VisitTableGateway($dbAdapter);
+	//$result = $gate->displayBrowserStatisticsTable();
+
+	$gate2 = new DeviceBrandTableGateway($dbAdapter);
+	$result2 = $gate2->getDeviceBrands();
+
+	//$result3 = $gate2->displaySelect($result2);
+	
+	//finished, so end the connection
+	$dbAdapter->closeConnection();
+?>
+
 <html lang="en">
 <head>
 	<title>Admin Dashboard</title>
@@ -13,6 +29,7 @@
 	
 	<!--Import jQuery BEFORE materialize.js-->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 	<script type="text/javascript" src="js/materialize-modified.js"></script>
 </head>
@@ -42,29 +59,7 @@
 			<div class="card-panel orange lighten-2 cardOne">
 			  <div class="white blue-grey-text text-darken-4 card-inner-content">
 				<h1 class="card-header">Visitors by Browser</h1>
-					<!-- REMOVE: Make this dynamic in JS -->
-					<table class="striped highlight responsive-table table-hover-browsers">
-						<thead>
-							<tr>
-								<th data-field="id">Browsers</th>
-								<th data-field="name">%</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>IE</td>
-								<td class="orange-text text-darken-4 bold">75</td>
-							</tr>
-							<tr>
-								<td>Firefox</td>
-								<td class="orange-text text-darken-4 bold">110</td>
-							</tr>
-							<tr>
-								<td>Chrome</td>
-								<td class="orange-text text-darken-4 bold">250</td>
-							</tr>
-						</tbody>
-					</table>
+					<?php $result = $gate->displayBrowserStatisticsTable(); ?>
 			  </div>
 			</div>
 		  </div>
@@ -113,22 +108,59 @@
 		<div class="row">
 		  <div class="col l7 m6 s6">
 			<div class="card-panel teal lighten-2 cardTwo">
-			  <div class=" white blue-grey-text text-darken-4 card-inner-content">
-				<h1 class="card-header">Visitors by Device Used</h1><br/>
-				<!-- REMOVE: Make Dynamic Dropdown Trigger -->
-				<a class="dropdown-button btn teal lighten-2" href="#" data-activates="dropdown-brand-devices">Pick a Brand!</a>
-
-				<!-- REMOVE: Make Dynamic Dropdown Structure -->
-				<ul id="dropdown-brand-devices" class="dropdown-content">
-					<li><a href="#!" class="teal-text text-darken-1">one</a></li>
-					<li><a href="#!" class="teal-text text-darken-1">two</a></li>
-					<li><a href="#!" class="teal-text text-darken-1">three</a></li>
-				</ul>
-				<p class="right">Visit Count: <span class="teal-text text-darken-1 bold">75</span></p>
+			  <div class=" white blue-grey-text text-darken-4 card-inner-content" id="parent1">
+				<h1 class="card-header">Visitors by Device Used</h1><br/>			
+				<?php $result3 = $gate2->displaySelect($result2); ?>
 			  </div>
 			</div>
 		  </div>
 		</div>
 	</div>
 </body>
+<script>
+window.onload=function(){
+
+
+document.querySelector('select').addEventListener("change", function() {
+	
+	var div = document.querySelector('#parent1');
+	var toRemove = document.querySelector("p#p");
+	if(toRemove != null) {
+		div.removeChild(toRemove);
+	}
+	
+	asyncAJAXRequest(this.value);
+});
+
+function asyncAJAXRequest(brandName) {
+	$.ajax({
+		type: "post",
+		url: "asyncRequest.php",
+		async: true,
+		data: {brand: brandName}, 
+		success: function(receivedArray) {
+		var array1 = JSON.parse(receivedArray); //this line and
+		displayBrandVisitData(array1); 	//this call are here to keep the code that reads the array from executing before
+      }									//the AJAX request has returned.
+    });
+}
+
+function displayBrandVisitData(visitsArray) {
+	var para = document.createElement("p");
+	para.id = "p";
+	para.className = "right"
+	var node = document.createTextNode('Visits for ' + visitsArray[0] + ': ');
+	var span = document.createElement("span")
+	span.className = "teal-text text-darken-1 bold";
+	span.innerHTML = visitsArray[1];
+	para.appendChild(node);
+	para.appendChild(span);
+	
+	var select = document.querySelector("Select");
+	
+	select.parentNode.insertBefore(para, select.nextSibling);
+}
+
+};	
+</script>
 </html>
