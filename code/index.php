@@ -37,8 +37,10 @@
 	
 	<!-- Container: Main -->
 	<div class="container">
+        <div class="row">
+            <div class="col l7 m6 s6">
 		<div class="row">
-		  <div class="col l7 m6 s6">
+		  <div class="col s12">
 			<div class="card-panel orange lighten-2 cardOne">
 			  <div class="white blue-grey-text text-darken-4 card-inner-content">
 				<h1 class="card-header">Visitors by Browser</h1>
@@ -68,50 +70,8 @@
 			  </div>
 			</div>
 		  </div>
-		  <div class="col l5 m6 s6">
-			<div class="card-panel pink lighten-2 CardThree">
-			  <div class="white blue-grey-text text-darken-4 card-inner-content">
-				<h1 class="card-header">Visitors by Continents</h1><br/>
-					<!-- REMOVE: Make Dynamic Dropdown Trigger -->
-					<a class="dropdown-button btn pink lighten-2" href="#" data-activates="dropdown-continents">Pick a Continent!</a>
 
-					<!-- REMOVE: Make Dynamic Dropdown Structure -->
-					<ul id="dropdown-continents" class="dropdown-content">
-						<li><a href="#!" class="pink-text text-darken-1">America</a></li>
-						<li><a href="#!" class="pink-text text-darken-1">Africa</a></li>
-						<li><a href="#!" class="pink-text text-darken-1">Asia</a></li>
-					</ul>
-				
-					<!-- REMOVE: Make this dynamic in JS -->
-					<table class="striped highlight responsive-table table-hover-continents">
-						<thead>
-							<tr>
-								<th data-field="id">Countries</th>
-								<th data-field="name">Visitor Count</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Mexico</td>
-								<td class="pink-text text-darken-1 bold">7755</td>
-							</tr>
-							<tr>
-								<td>Canada</td>
-								<td class="pink-text text-darken-1 bold">17710</td>
-							</tr>
-							<tr>
-								<td>USA</td>
-								<td class="pink-text text-darken-1 bold">25990</td>
-							</tr>
-						</tbody>
-					</table>
-			  </div>
-			</div>
-		  </div>
-		</div>
-		
-		<div class="row">
-		  <div class="col l7 m6 s6">
+		  <div class="col s12">
 			<div class="card-panel teal lighten-2 cardTwo">
 			  <div class=" white blue-grey-text text-darken-4 card-inner-content">
 				<h1 class="card-header">Visitors by Device Used</h1><br/>
@@ -128,6 +88,48 @@
 			  </div>
 			</div>
 		  </div>
+        </div>
+    </div>
+          <div class="col l5 m6 s6">
+				<div class="card-panel pink lighten-2 CardThree">
+					<div class="white blue-grey-text text-darken-4 card-inner-content">
+						<h1 class="card-header">Visitors by Continents</h1><br/>
+						<!-- REMOVE: Make Dynamic Dropdown Trigger -->
+						<a class="dropdown-button btn pink lighten-2" href="#" data-activates="dropdown-continents">Pick a Continent!</a>
+
+						<!-- REMOVE: Make Dynamic Dropdown Structure -->
+						<ul id="dropdown-continents" class="dropdown-content">
+							<li><a href="#!" class="pink-text text-darken-1">America</a></li>
+							<li><a href="#!" class="pink-text text-darken-1">Africa</a></li>
+							<li><a href="#!" class="pink-text text-darken-1">Asia</a></li>
+						</ul>
+
+						<!-- REMOVE: Make this dynamic in JS -->
+						<table class="striped highlight responsive-table table-hover-continents">
+							<thead>
+							<tr>
+								<th data-field="id">Countries</th>
+								<th data-field="name">Visitor Count</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>Mexico</td>
+								<td class="pink-text text-darken-1 bold">7755</td>
+							</tr>
+							<tr>
+								<td>Canada</td>
+								<td class="pink-text text-darken-1 bold">17710</td>
+							</tr>
+							<tr>
+								<td>USA</td>
+								<td class="pink-text text-darken-1 bold">25990</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
