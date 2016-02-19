@@ -27,15 +27,17 @@ class VisitTableGateway extends TableDataGateway
    public function getVisitsByBrowser($browser)
    {
 		//Retrieve # of visits for specified browser 
-		$sql = 'SELECT COUNT(browser_id) AS visitCount, name 
+		$sql1 = 'SELECT COUNT(browser_id) AS visitCount
 				FROM browsers INNER JOIN visits 
 				ON browsers.ID = visits.browser_id 
 				WHERE name = "' . $browser['name'] . '"';	
 
 		//convert records to array
-		$result = $this->dbAdapter->fetchAsArray($sql, null);
+		$result1 = $this->dbAdapter->fetchAsArray($sql1, null);
 
-		return $result;
+		$numResult = (int)$result1[0]['visitCount'];
+
+		return $numResult;
 
 	}
 	
@@ -74,21 +76,21 @@ class VisitTableGateway extends TableDataGateway
 	   foreach($list as $curr_browser) {
 		   $result2 = $this->getVisitsByBrowser($curr_browser);
 		   array_push($statArray, $result2);
-	   }
+	   }  
 	   
 	echo '<table border="1">';
 	echo '<caption>Percentage of Visits by Browser</caption>';
 	echo '<tr>';
+	
 	for($i = 0; $i < count($statArray); $i++)
 	{
-		echo '<th>' . $statArray[$i][0]['name'] . '</th>';
+		echo '<th>' . $list[$i]['name'] . '</th>';
 	}
 	echo '</tr>';
 
 	for($k = 0; $k < count($statArray); $k++)
 	{
-		$visitsForSelectedBrowser = (int)$statArray[$k][0]['visitCount'];
-		$visitsForSelectedBrowser = (int)$statArray[$k][0]['visitCount'];
+		$visitsForSelectedBrowser = $statArray[$k];
 		$percent = ($visitsForSelectedBrowser / $totalVisits) * 100;
 		echo '<td>' . round($percent, 2) . '%</td>';
 	}
