@@ -1,0 +1,48 @@
+@import url(https://fonts.googleapis.com/css?family=Muli:300);
+
+.bold {
+	font-weight: bold;
+}
+
+nav a.button-collapse {
+	display: initial;
+	padding-left: 20px;
+}
+
+nav .brand-logo {
+	font-family: 'Muli', sans-serif;
+}
+
+.side-nav li:hover, .side-nav li.active {
+	background-color: transparent;
+}
+
+.side-nav-underline a:hover {
+	border-bottom: 2px solid #B71C1C;
+    background-color: #FFF;
+}
+
+.home-icon {
+	display: inline;
+}
+
+.card-inner-content {
+	padding: 5px;
+	margin: -15px;
+}
+
+.card-header {
+    font-family: 'Muli', sans-serif;
+	color: #B71C1C;
+	font-size: 1.5em;
+	padding: 0;
+	margin: 0;
+}
+
+.table-hover-continents tbody tr:hover td {
+  background-color: #f8bbd0;
+}
+
+.table-hover-browsers tbody tr:hover td {
+  background-color: #ffe0b2;
+}
