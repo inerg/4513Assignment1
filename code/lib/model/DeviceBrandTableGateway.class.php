@@ -27,6 +27,35 @@ class DeviceBrandTableGateway extends TableDataGateway
    }
 
 
+   public function getDeviceBrands()
+   {
+		$sql = 'SELECT name
+				FROM device_brands';
+				
+		$result = $this->dbAdapter->fetchAsArray($sql, null);
+	   
+	   return $result;
+   }
+   
+   public function getBrandVisits($brand)
+   {
+		$sql = 'SELECT COUNT(visits.id) AS visitCount, name
+				FROM device_brands INNER JOIN visits ON device_brands.ID = visits.device_brand_id
+				WHERE name = "' .$brand. '"';
+				
+		$result = $this->dbAdapter->fetchAsArray($sql, null);
+	   
+		return $result;
+   }
+   
+   
+	public function displaySelect($brandsList) {
+		echo '<select>';
+		foreach ($brandsList as $currBrand) {
+			echo '<option>' . $currBrand['name'] . '</option>';
+		}
+		echo '</select>'; 
+   }
 }
 
 ?>

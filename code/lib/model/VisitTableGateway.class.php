@@ -67,6 +67,7 @@ class VisitTableGateway extends TableDataGateway
 		return $c;
 	}
 	
+	//Outputs a <table> to screen with browser visit statistics
 	public function displayBrowserStatisticsTable()
    {
 	   $totalVisits = $this->getTotalVisits();
