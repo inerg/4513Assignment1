@@ -25,7 +25,7 @@
 			<!-- Side Popout Menu -->
 			<ul id="slide-out" class="side-nav full">
 				<li class="side-nav-underline orange lighten-2"><a href="index.php"><i class="material-icons home-icon">home</i></a></li>
-				<li class="side-nav-underline"><a href="#!">About Us</a></li>
+				<li class="side-nav-underline"><a href="about.php">About Us</a></li>
 				<li class="side-nav-underline"><a href="#!">JSON Material Cards</a></li>
 				<li class="side-nav-underline"><a href="#!">Visit Browser</a></li>
 				<li class="side-nav-underline"><a href="#!">Charts</a></li>
@@ -41,7 +41,7 @@
             <div class="col l7 m6 s6">
 		<div class="row">
 		  <div class="col s12">
-			<div class="card-panel orange lighten-2 cardOne">
+			<div class="card-panel orange lighten-2 cardOne z-depth-2">
 			  <div class="white blue-grey-text text-darken-4 card-inner-content">
 				<h1 class="card-header">Visitors by Browser</h1>
 					<!-- REMOVE: Make this dynamic in JS -->
@@ -72,7 +72,7 @@
 		  </div>
 
 		  <div class="col s12">
-			<div class="card-panel teal lighten-2 cardTwo">
+			<div class="card-panel teal lighten-2 cardTwo z-depth-2">
 			  <div class=" white blue-grey-text text-darken-4 card-inner-content">
 				<h1 class="card-header">Visitors by Device Used</h1><br/>
 				<!-- REMOVE: Make Dynamic Dropdown Trigger -->
@@ -91,7 +91,7 @@
         </div>
     </div>
           <div class="col l5 m6 s6">
-				<div class="card-panel pink lighten-2 CardThree">
+				<div class="card-panel pink lighten-2 CardThree z-depth-2">
 					<div class="white blue-grey-text text-darken-4 card-inner-content">
 						<h1 class="card-header">Visitors by Continents</h1><br/>
 						<!-- REMOVE: Make Dynamic Dropdown Trigger -->
