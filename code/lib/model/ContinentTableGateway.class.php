@@ -63,7 +63,7 @@ class ContinentTableGateway extends TableDataGateway
 	   $continents = $this->getContinentNames();
 	   foreach($continents as $continent)
 	   {
-		   if($continent == $selectedContinent){
+		   if($continent['ContinentCode'] == $selectedContinent){
 			   echo '<option value="' . $continent['ContinentCode'] . '" selected>' . $continent['ContinentName'] . '</option>';
 		   } else {
 			   echo '<option value="' . $continent['ContinentCode'] . '">' . $continent['ContinentName'] . '</option>';
@@ -79,7 +79,7 @@ class ContinentTableGateway extends TableDataGateway
 
            foreach($visitsCount as $visitCount)
            {
-               echo '<tr><td>'.$visitsCount['CountryName'].'</td><td class="pink-text text-darken-1 bold">'.$visitsCount['VisitCount'].'</td></tr>';
+               echo '<tr><td>'.$visitCount['CountryName'].'</td><td class="pink-text text-darken-1 bold">'.$visitCount['VisitCount'].'</td></tr>';
            }
 
        }
