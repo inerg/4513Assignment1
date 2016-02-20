@@ -42,7 +42,7 @@ class ContinentTableGateway extends TableDataGateway
                     CountryName
                     FROM visits v
                     INNER JOIN countries c ON c.ISO = v.country_code
-                    WHERE country_code in (select ISO from countries where continent = '.$continentCode.')
+                    WHERE country_code in (select ISO from countries where continent = \''.$continentCode.'\'
                     GROUP BY country_code';
 
             //convert records to array

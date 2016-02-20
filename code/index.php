@@ -38,13 +38,15 @@
 							<!-- REMOVE: Make Dynamic Dropdown Structure -->
 <!--							<ul id="dropdown-continents" class="dropdown-content">-->
                             <form action="index.php" method="get" id="continentSelect" target="_self">
-                                <select  class="btn pink lighten-2 brand-button" name="continent" onchange="continentChange()">
+                                <div class="input-field">
+                                    <select  class="btn pink lighten-2 brand-button" name="continent" onchange="continentChange()">
 
-                                    <?php
-                                        $continentGate->printList(trim($_GET['continent']));
-                                    ?>
+                                        <?php
+                                            $continentGate->printList(trim($_GET['continent']));
+                                        ?>
 
-                                </select>
+                                    </select>
+                                </div>
                             </form>
 <!--							</ul>-->
 
