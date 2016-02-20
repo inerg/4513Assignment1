@@ -62,17 +62,17 @@ class ContinentTableGateway extends TableDataGateway
 	}
 	
 	//Outputs a <table> to screen with browser visit statistics
-	public function printList($continent = null)
+	public function printList($selectedContinent = null)
    {
-	   if($continent == null) {
-		   echo '<option class="placeholder" selected disabled value="">Pick a Brand!</option>';
+	   if($selectedContinent == null) {
+		   echo '<option class="placeholder" selected disabled value="">Pick a Continent!</option>';
 	   } else {
-		   echo '<option class="placeholder" disabled value="">Pick a Brand!</option>';
+		   echo '<option class="placeholder" disabled value="">Pick a Continent!</option>';
 	   }
 	   $continents = getContinentNames();
 	   foreach($continents as $continent)
 	   {
-		   if($continent === $continent['ContinentCode']){
+		   if($continent == $selectedContinent){
 			   echo '<option value="' . $continent['ContinentCode'] . '" selected>' . $continent['ContinentName'] . '</option>';
 		   } else {
 			   echo '<option value="' . $continent['ContinentCode'] . '">' . $continent['ContinentName'] . '</option>';
