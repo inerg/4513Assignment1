@@ -35,41 +35,32 @@ class ContinentTableGateway extends TableDataGateway
 
 	}
 	
-	public function getListOfBrowsers() {
-		
-		$sql = 'SELECT name 
-				FROM browsers';
-				
-		//convert records to array
-		$result = $this->dbAdapter->fetchAsArray($sql, null);
-		
-		return $result;
+	public function getVisitsByContinentCode($continentCode = null) {
+
+        if($continentCode != null) {
+            $sql = 'SELECT COUNT(id) as VisitCount,
+                    CountryName
+                    FROM visits v
+                    INNER JOIN countries c ON c.ISO = v.country_code
+                    WHERE country_code in (select ISO from countries where continent = '.$continentCode.')
+                    GROUP BY country_code';
+
+            //convert records to array
+            $result = $this->dbAdapter->fetchAsArray($sql, null);
+            return $result;
+        }
 	}
 	
-	public function getTotalVisits() {
-		$sql = 'SELECT COUNT(id) AS numVisits 
-				FROM visits';
-		
-		//convert records to array
-		$result = $this->dbAdapter->fetchAsArray($sql, null);
-		
-		foreach($result as $a) {
-			foreach($a as $b) {
-				$c = (int)$b;
-			}
-		}
-		return $c;
-	}
-	
-	//Outputs a <table> to screen with browser visit statistics
+
+	//Outputs a option list of continents.
 	public function printList($selectedContinent = null)
    {
 	   if($selectedContinent == null) {
-		   echo '<option class="placeholder" selected disabled value="">Pick a Continent!</option>';
+		   echo '<option class="placeholder" selected disabled value="">Select Continent</option>';
 	   } else {
-		   echo '<option class="placeholder" disabled value="">Pick a Continent!</option>';
+		   echo '<option class="placeholder" disabled value="">Select Continent!</option>';
 	   }
-	   $continents = getContinentNames();
+	   $continents = $this->getContinentNames();
 	   foreach($continents as $continent)
 	   {
 		   if($continent == $selectedContinent){
@@ -79,6 +70,22 @@ class ContinentTableGateway extends TableDataGateway
 		   }
 	   }
 			
+   }
+	//Outputs a table of the visits by country based on the coninent.
+	public function printVisitList($selectedContinent = null)
+   {
+	   if($selectedContinent != null) {
+           $visitsCount = $this->getVisitsByContinentCode($selectedContinent);
+
+           foreach($visitsCount as $visitCount)
+           {
+               echo '<tr><td>'.$visitsCount['CountryName'].'</td><td class="pink-text text-darken-1 bold">'.$visitsCount['VisitCount'].'</td></tr>';
+           }
+
+       }
+
+
+
    }
 
 }

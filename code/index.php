@@ -57,18 +57,9 @@
 								</tr>
 								</thead>
 								<tbody>
-								<tr>
-									<td>Mexico</td>
-									<td class="pink-text text-darken-1 bold">7755</td>
-								</tr>
-								<tr>
-									<td>Canada</td>
-									<td class="pink-text text-darken-1 bold">17710</td>
-								</tr>
-								<tr>
-									<td>USA</td>
-									<td class="pink-text text-darken-1 bold">25990</td>
-								</tr>
+                                <?php
+                                    $continentGate->printVisitList($_GET['continent']);
+                                ?>
 								</tbody>
 							</table>
 						</div>
