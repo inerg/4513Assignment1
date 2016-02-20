@@ -1,6 +1,14 @@
 <?php include 'php/other/gateway_setup.php'; ?>
 <?php include 'php/masterpages/header.php'; ?>
+<?php
+$continent = null;
+$brand = null;
+    if(isset($_GET['continent']))
+    {
+        $continent = $_GET['continent'];
+    }
 
+?>
 <!-- Container: Main -->
 <div class="container">
 	<div class="row">
@@ -37,15 +45,23 @@
 
 							<!-- REMOVE: Make Dynamic Dropdown Structure -->
 <!--							<ul id="dropdown-continents" class="dropdown-content">-->
-                            <form action="index.php" method="get">
-                                <select id="continentSelect" class="btn teal lighten-2 brand-button" name="continent" onchange="continentChange()">'
-                                    <option class="placeholder" selected disabled value="">Pick a Brand!</option>
-                                    <?php
+                            <form action="index.php" method="get" id="continentSelect">
+                                <select  class="btn teal lighten-2 brand-button" name="continent" onchange="continentChange()">'
 
+                                    <?php
+                                        if($continent == null) {
+                                            echo '<option class="placeholder" selected disabled value="">Pick a Brand!</option>';
+                                            } else {
+                                            echo '<option class="placeholder" disabled value="">Pick a Brand!</option>';
+                                        }
                                         $continents = $continentGate->getContinentNames();
                                         foreach($continents as $continent)
                                         {
-                                            echo '<option value="'.$continent['ContinentCode'].'">' . $continent['ContinentName'] . '</option>';
+                                            if($continent == $continent['ContinentCode']){
+                                                echo '<option value="' . $continent['ContinentCode'] . '" selected>' . $continent['ContinentName'] . '</option>';
+                                            } else {
+                                                echo '<option value="' . $continent['ContinentCode'] . '">' . $continent['ContinentName'] . '</option>';
+                                            }
                                         }
                                     ?>
                                 </select>
