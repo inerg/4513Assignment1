@@ -12,4 +12,5 @@ if(isset($_POST['brand']) && !empty($_POST['brand'])) {
 
 	echo json_encode($stringToConvert);
 	}
+	
 ?>
