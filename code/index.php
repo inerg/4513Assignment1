@@ -18,27 +18,14 @@
 </head>
 <body>
 	<!-- Navigation -->
-	<div class="navbar-fixed">
-	<nav>
-		<div class="nav-wrapper red darken-4">
-			<a href="index.php" class="brand-logo center hide-on-med-and-down"><span class="orange-text text-lighten-2">Admin</span> Dashboard</a>
-			<!-- Side Popout Menu -->
-			<ul id="slide-out" class="side-nav full">
-				<li class="side-nav-underline orange lighten-2"><a href="index.php"><i class="material-icons home-icon">home</i></a></li>
-				<li class="side-nav-underline"><a href="about.php">About Us</a></li>
-				<li class="side-nav-underline"><a href="#!">JSON Material Cards</a></li>
-				<li class="side-nav-underline"><a href="#!">Visit Browser</a></li>
-				<li class="side-nav-underline"><a href="#!">Charts</a></li>
-			</ul>
-			<a href="#" data-activates="slide-out" class="button-collapse"><i class="medium mdi-navigation-menu"></i></a>
-		</div>
-	</nav>
-	</div>
+    <?php
+        include 'navigation';
+    ?>
 	
 	<!-- Container: Main -->
 	<div class="container">
         <div class="row">
-            <div class="col l7 m6 s6">
+            <div class="col l7 m6 s12">
 		<div class="row">
 		  <div class="col s12">
 			<div class="card-panel orange lighten-2 cardOne z-depth-2">
@@ -90,7 +77,9 @@
 		  </div>
         </div>
     </div>
-          <div class="col l5 m6 s6">
+            <div class="row">
+                <div class="col l5 m6 s12">
+          <div class="col s12">
 				<div class="card-panel pink lighten-2 CardThree z-depth-2">
 					<div class="white blue-grey-text text-darken-4 card-inner-content">
 						<h1 class="card-header">Visitors by Continents</h1><br/>
@@ -131,6 +120,8 @@
 				</div>
 			</div>
 		</div>
+            </div>
+    </div>
 	</div>
 </body>
 </html>
