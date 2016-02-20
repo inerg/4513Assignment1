@@ -62,40 +62,22 @@ class ContinentTableGateway extends TableDataGateway
 	}
 	
 	//Outputs a <table> to screen with browser visit statistics
-	public function displayBrowserStatisticsTable()
+	public function printList($continent = null)
    {
-	   $totalVisits = $this->getTotalVisits();
-	   $list = $this->getListOfBrowsers();
-	   $totalVisits = $this->getTotalVisits();
-	   $statArray = [];
-	   foreach($list as $curr_browser) {
-		   $result2 = $this->getVisitsByBrowser($curr_browser);
-		   array_push($statArray, $result2);
-	   }  
-	   
-	
-		echo '<table class="striped highlight responsive-table table-hover-browsers">
-						<thead>
-							<tr>
-								<th data-field="id">Browsers</th>
-								<th data-field="name">%</th>
-							</tr>
-						</thead>
-						<tbody>';
-		
-		
-		for($i = 0; $i < count($statArray); $i++)
-		{
-			echo '<tr>';
-			echo '<td>' . $list[$i]['name'] . '</td>';
-		
-			$visitsForSelectedBrowser = $statArray[$i];
-			$percent = ($visitsForSelectedBrowser / $totalVisits) * 100;
-			echo '<td class="orange-text text-darken-4 bold">' . round($percent, 2) . '%</td>';
-	
-			echo '</tr>';
-		}
-		echo '</tbody></table>';
+	   if($continent == null) {
+		   echo '<option class="placeholder" selected disabled value="">Pick a Brand!</option>';
+	   } else {
+		   echo '<option class="placeholder" disabled value="">Pick a Brand!</option>';
+	   }
+	   $continents = getContinentNames();
+	   foreach($continents as $continent)
+	   {
+		   if($continent === $continent['ContinentCode']){
+			   echo '<option value="' . $continent['ContinentCode'] . '" selected>' . $continent['ContinentName'] . '</option>';
+		   } else {
+			   echo '<option value="' . $continent['ContinentCode'] . '">' . $continent['ContinentName'] . '</option>';
+		   }
+	   }
 			
    }
 

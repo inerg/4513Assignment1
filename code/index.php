@@ -1,14 +1,6 @@
 <?php include 'php/other/gateway_setup.php'; ?>
 <?php include 'php/masterpages/header.php'; ?>
-<?php
-$continent = null;
-$brand = null;
-    if(isset($_GET['continent']))
-    {
-        $continent = $_GET['continent'];
-    }
 
-?>
 <!-- Container: Main -->
 <div class="container">
 	<div class="row">
@@ -49,21 +41,9 @@ $brand = null;
                                 <select  class="btn pink lighten-2 brand-button" name="continent" onchange="continentChange()">'
 
                                     <?php
-                                        if($continent == null) {
-                                            echo '<option class="placeholder" selected disabled value="">Pick a Brand!</option>';
-                                            } else {
-                                            echo '<option class="placeholder" disabled value="">Pick a Brand!</option>';
-                                        }
-                                        $continents = $continentGate->getContinentNames();
-                                        foreach($continents as $continent)
-                                        {
-                                            if($continent === $continent['ContinentCode']){
-                                                echo '<option value="' . $continent['ContinentCode'] . '" selected>' . $continent['ContinentName'] . '</option>';
-                                            } else {
-                                                echo '<option value="' . $continent['ContinentCode'] . '">' . $continent['ContinentName'] . '</option>';
-                                            }
-                                        }
+                                        $continentGate->printList($_GET['continent']);
                                     ?>
+
                                 </select>
                             </form>
 <!--							</ul>-->
