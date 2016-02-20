@@ -41,12 +41,12 @@ $brand = null;
 						<div class="white blue-grey-text text-darken-4 card-inner-content">
 							<h1 class="card-header">Visitors by Continents</h1><br/>
 							<!-- REMOVE: Make Dynamic Dropdown Trigger -->
-							<a class="dropdown-button btn pink lighten-2" href="#" data-activates="dropdown-continents">Pick a Continent!</a>
+<!--							<a class="dropdown-button btn pink lighten-2" href="#" data-activates="dropdown-continents">Pick a Continent!</a>-->
 
 							<!-- REMOVE: Make Dynamic Dropdown Structure -->
 <!--							<ul id="dropdown-continents" class="dropdown-content">-->
                             <form action="index.php" method="get" id="continentSelect">
-                                <select  class="btn teal lighten-2 brand-button" name="continent" onchange="continentChange()">'
+                                <select  class="btn pink lighten-2 brand-button" name="continent" onchange="continentChange()">'
 
                                     <?php
                                         if($continent == null) {
@@ -57,7 +57,7 @@ $brand = null;
                                         $continents = $continentGate->getContinentNames();
                                         foreach($continents as $continent)
                                         {
-                                            if($continent == $continent['ContinentCode']){
+                                            if($continent === $continent['ContinentCode']){
                                                 echo '<option value="' . $continent['ContinentCode'] . '" selected>' . $continent['ContinentName'] . '</option>';
                                             } else {
                                                 echo '<option value="' . $continent['ContinentCode'] . '">' . $continent['ContinentName'] . '</option>';
