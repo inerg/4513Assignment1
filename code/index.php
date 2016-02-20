@@ -36,11 +36,21 @@
 							<a class="dropdown-button btn pink lighten-2" href="#" data-activates="dropdown-continents">Pick a Continent!</a>
 
 							<!-- REMOVE: Make Dynamic Dropdown Structure -->
-							<ul id="dropdown-continents" class="dropdown-content">
-								<li><a href="#!" class="pink-text text-darken-1">America</a></li>
-								<li><a href="#!" class="pink-text text-darken-1">Africa</a></li>
-								<li><a href="#!" class="pink-text text-darken-1">Asia</a></li>
-							</ul>
+<!--							<ul id="dropdown-continents" class="dropdown-content">-->
+                            <form action="index.php" method="get">
+                                <select id="continentSelect" class="btn teal lighten-2 brand-button" name="continent" onchange="continentChange()">'
+                                    <option class="placeholder" selected disabled value="">Pick a Brand!</option>
+                                    <?php
+
+                                        $continents = $continentGate->getContinentNames();
+                                        foreach($continents as $continent)
+                                        {
+                                            echo '<option value="'.$continent['ContinentCode'].'">' . $continent['ContinentName'] . '</option>';
+                                        }
+                                    ?>
+                                </select>
+                            </form>
+<!--							</ul>-->
 
 							<!-- REMOVE: Make this dynamic in JS -->
 							<table class="striped highlight responsive-table table-hover-continents">

@@ -24,20 +24,14 @@ class ContinentTableGateway extends TableDataGateway
    }
    
    
-   public function getVisitsByBrowser($browser)
+   public function getContinentNames()
    {
 		//Retrieve # of visits for specified browser 
-		$sql1 = 'SELECT COUNT(browser_id) AS visitCount
-				FROM browsers INNER JOIN visits 
-				ON browsers.ID = visits.browser_id 
-				WHERE name = "' . $browser['name'] . '"';	
+		$sql = 'SELECT ContinentName, ContinentCode FROM continents';
 
 		//convert records to array
-		$result1 = $this->dbAdapter->fetchAsArray($sql1, null);
-
-		$numResult = (int)$result1[0]['visitCount'];
-
-		return $numResult;
+		$result = $this->dbAdapter->fetchAsArray($sql, null);
+		return $result;
 
 	}
 	
