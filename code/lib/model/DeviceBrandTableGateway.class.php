@@ -50,12 +50,24 @@ class DeviceBrandTableGateway extends TableDataGateway
    
    
 	public function displaySelect($brandsList) {
-		echo '<select>';
+		
+		/*echo '<ul id="dropdown-brand-devices" class="dropdown-content">';
+		
+		foreach ($brandsList as $currBrand) {
+			echo '<li><a href="#!" class="teal-text text-darken-1">'. $currBrand['name'] .'</a></li>';
+		}
+		echo '</ul>';
+		*/
+
+		echo '<select class="btn teal lighten-2" id="custButton">';
+		echo '<option class="placeholder" selected disabled value="">Pick a Brand!</option>';
 		foreach ($brandsList as $currBrand) {
 			echo '<option>' . $currBrand['name'] . '</option>';
 		}
 		echo '</select>'; 
-   }
+   
+}
+
 }
 
 ?>

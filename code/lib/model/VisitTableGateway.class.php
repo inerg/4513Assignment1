@@ -79,23 +79,30 @@ class VisitTableGateway extends TableDataGateway
 		   array_push($statArray, $result2);
 	   }  
 	   
-	echo '<table border="1">';
-	echo '<caption>Percentage of Visits by Browser</caption>';
-	echo '<tr>';
 	
-	for($i = 0; $i < count($statArray); $i++)
-	{
-		echo '<th>' . $list[$i]['name'] . '</th>';
-	}
-	echo '</tr>';
-
-	for($k = 0; $k < count($statArray); $k++)
-	{
-		$visitsForSelectedBrowser = $statArray[$k];
-		$percent = ($visitsForSelectedBrowser / $totalVisits) * 100;
-		echo '<td>' . round($percent, 2) . '%</td>';
-	}
-	echo '</tr></table>';				
+		echo '<table class="striped highlight responsive-table table-hover-browsers">
+						<thead>
+							<tr>
+								<th data-field="id">Browsers</th>
+								<th data-field="name">%</th>
+							</tr>
+						</thead>
+						<tbody>';
+		
+		
+		for($i = 0; $i < count($statArray); $i++)
+		{
+			echo '<tr>';
+			echo '<td>' . $list[$i]['name'] . '</td>';
+		
+			$visitsForSelectedBrowser = $statArray[$i];
+			$percent = ($visitsForSelectedBrowser / $totalVisits) * 100;
+			echo '<td class="orange-text text-darken-4 bold">' . round($percent, 2) . '%</td>';
+	
+			echo '</tr>';
+		}
+		echo '</tbody></table>';
+			
    }
 
 }
