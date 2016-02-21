@@ -17,20 +17,22 @@
 
 			  <div class="col s12">
 				<div class="card-panel teal lighten-2 cardTwo z-depth-2">
-				  <div class=" white blue-grey-text text-darken-4 card-inner-content" id="parent1">
-					<h1 class="card-header">Visitors by Device Used</h1><br/>
-                      <form action="index.php" method="get" id="brandSelect" target="_self">
-                          <div class="input-field col s7">
-                              <select  class="btn teal lighten-2" name="brand" onchange="formChange('brandSelect')">
-                              <?php
-                                $gate2->printBrandDropdown(trim($_GET['brand']));
-                              ?>
-                              </select>
-                          </div>
-                      </form>
-                      <?php
-                        $gate2->printBrandVists(trim($_GET['brand']));
-                      ?>
+				  <div class="white blue-grey-text text-darken-4 card-inner-content" id="parent1">
+                      <h1 class="card-header">Visitors by Device Used</h1><br/>
+                      <div class="row">
+                          <form action="index.php" method="get" id="brandSelect" target="_self">
+                              <div class="input-field col s7">
+                                  <select  class="btn teal lighten-2" name="brand" onchange="formChange('brandSelect')">
+                                  <?php
+                                    $gate2->printBrandDropdown(trim($_GET['brand']));
+                                  ?>
+                                  </select>
+                              </div>
+                          </form>
+                          <?php
+                            $gate2->printBrandVists(trim($_GET['brand']));
+                          ?>
+                      </div>
 				  </div>
 				</div><!--/cardTwo: Device Brands-->
 			  </div>

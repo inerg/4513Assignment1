@@ -78,7 +78,7 @@ class DeviceBrandTableGateway extends TableDataGateway
         $brands = $this->getDeviceBrands();
         foreach($brands as $brand)
         {
-            if($brand['ContinentCode'] == $selectedBrand){
+            if($brand['name'] == $selectedBrand){
                 echo '<option value="' . $brand['name'] . '" selected>' . $brand['name'] . '</option>';
             } else {
                 echo '<option value="' . $brand['name'] . '">' . $brand['name'] . '</option>';
