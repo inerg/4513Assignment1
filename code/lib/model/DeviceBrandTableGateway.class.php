@@ -50,17 +50,8 @@ class DeviceBrandTableGateway extends TableDataGateway
    
    
 	public function displaySelect($brandsList) {
-		
-		/*echo '<ul id="dropdown-brand-devices" class="dropdown-content">';
-		
-		foreach ($brandsList as $currBrand) {
-			echo '<li><a href="#!" class="teal-text text-darken-1">'. $currBrand['name'] .'</a></li>';
-		}
-		echo '</ul>';
-		*/
-
-		echo '<select class="btn teal lighten-2 brand-button change">';
-		echo '<option class="placeholder" selected disabled value="">Pick a Brand!</option>';
+		echo '<select class="btn teal lighten-2 brand-button change dropdown-button-widths">';
+		echo '<option class="placeholder white-text teal darken-1" selected disabled value="">Pick a Brand!</option>';
 		foreach ($brandsList as $currBrand) {
 			echo '<option>' . $currBrand['name'] . '</option>';
 		}
@@ -71,9 +62,9 @@ class DeviceBrandTableGateway extends TableDataGateway
     public function printBrandDropdown($selectedBrand = null)
     {
         if($selectedBrand == null) {
-            echo '<option class="placeholder" selected disabled value="">Select Brand</option>';
+            echo '<option class="placeholder white-text teal darken-1" selected disabled>Select Brand</option>';
         } else {
-            echo '<option class="placeholder" disabled value="">Select Brand</option>';
+            echo '<option class="placeholder white-text teal darken-1" disabled value="">Select Brand</option>';
         }
         $brands = $this->getDeviceBrands();
         foreach($brands as $brand)

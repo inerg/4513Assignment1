@@ -56,9 +56,9 @@ class ContinentTableGateway extends TableDataGateway
 	public function printContinentDropdown($selectedContinent = null)
    {
 	   if($selectedContinent == null) {
-		   echo '<option class="placeholder" selected disabled value="">Select Continent</option>';
+		   echo '<option class="placeholder white-text pink darken-1" selected disabled>Select Continent</option>';
 	   } else {
-		   echo '<option class="placeholder" disabled value="">Select Continent</option>';
+		   echo '<option class="placeholder white-text pink darken-1" disabled>Select Continent</option>';
 	   }
 	   $continents = $this->getContinentNames();
 	   foreach($continents as $continent)

@@ -1,4 +1,4 @@
-<?php include 'php/other/gateway_setup.php'; ?>
+<?php include 'lib/gateway_setup.php'; ?>
 <?php include 'php/masterpages/header.php'; ?>
 
 <!-- Container: Main -->
@@ -10,7 +10,7 @@
 				<div class="card-panel orange lighten-2 cardOne z-depth-2">
 				  <div class="white blue-grey-text text-darken-4 card-inner-content">
 					<h1 class="card-header">Visitors by Browser</h1>
-						<?php $result = $gate->displayBrowserStatisticsTable(); ?>
+						<?php $browserGate->displayBrowserStatisticsTable(); ?>
 				  </div>
 				</div><!--/cardOne: Browsers -->
 			  </div>
@@ -19,7 +19,7 @@
 				<div class="card-panel teal lighten-2 cardTwo z-depth-2">
 				  <div class=" white blue-grey-text text-darken-4 card-inner-content" id="parent1">
 					<h1 class="card-header">Visitors by Device Used</h1><br/>
-					<?php $result3 = $gate2->displaySelect($result2); ?>
+					<?php $deviceBrandGate->displaySelect($allDeviceBrands); ?>
 				  </div>
 				</div><!--/cardTwo: Device Brands-->
 			  </div>
@@ -39,7 +39,7 @@
 <!--							<ul id="dropdown-continents" class="dropdown-content">-->
                             <form action="index.php" method="get" id="continentSelect" target="_self">
                                 <div class="input-field col s7">
-                                    <select  class="btn pink lighten-2" name="continent" onchange="formChange(continentSelect)">
+                                    <select  class="btn pink lighten-2 dropdown-button-widths" name="continent" onchange="formChange(continentSelect)">
 
                                         <?php
                                             $continentGate->printContinentDropdown(trim($_GET['continent']));
