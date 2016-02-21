@@ -90,7 +90,7 @@ class DeviceBrandTableGateway extends TableDataGateway
     public function printBrandVists($selectedBrand = null)
     {
         if($selectedBrand != null) {
-            echo '<p class="right">Visits for '.$selectedBrand.': <span class="teal-text text-darken-1 bold">'.$this->getBrandVisits($selectedBrand)['visitCount'].'</span></p>';
+            echo '<p class="right">Visits for '.$selectedBrand.': <span class="teal-text text-darken-1 bold">'.$this->getBrandVisits($selectedBrand)[0]['visitCount'].'</span></p>';
         }
 
     }
