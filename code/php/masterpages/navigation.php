@@ -5,6 +5,7 @@
 			<!-- Side Popout Menu -->
 			<ul id="slide-out" class="side-nav full">
 				<li class="side-nav-underline orange lighten-2"><a href="index.php" target="_parent"><i class="material-icons home-icon">home</i></a></li>
+				<li class="side-nav-underline"><a href="index-ajax.php" target="_parent">Main Page - AJAX</a></li>
 				<li class="side-nav-underline"><a href="about.php" target="_parent">About Us</a></li>
 				<li class="side-nav-underline"><a href="json-cards.php" target="_parent">JSON Material Cards</a></li>
 				<li class="side-nav-underline"><a href="#!" target="_parent">Visit Browser</a></li>

@@ -1,3 +1,3 @@
-function continentChange(){
-    document.getElementById('continentSelect').submit();
+function formChange(id){
+    document.getElementById(id).submit();
 }

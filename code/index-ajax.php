@@ -39,7 +39,7 @@
 <!--							<ul id="dropdown-continents" class="dropdown-content">-->
                             <form action="index.php" method="get" id="continentSelect" target="_self">
                                 <div class="input-field col s7">
-                                    <select  class="btn pink lighten-2" name="continent" onchange="continentChange()">
+                                    <select  class="btn pink lighten-2" name="continent" onchange="formChange(continentSelect)">
 
                                         <?php
                                             $continentGate->printList(trim($_GET['continent']));
