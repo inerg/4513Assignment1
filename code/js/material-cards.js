@@ -1,6 +1,6 @@
 window.onload=function(){
 
-document.querySelector('select').addEventListener("change", function() {
+document.querySelector('.change').addEventListener("change", function() {
 	
 	var div = document.querySelector('#parent1');
 	var toRemove = document.querySelector("p#p");

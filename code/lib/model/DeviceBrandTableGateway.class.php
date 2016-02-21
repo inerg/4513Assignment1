@@ -59,7 +59,7 @@ class DeviceBrandTableGateway extends TableDataGateway
 		echo '</ul>';
 		*/
 
-		echo '<select class="btn teal lighten-2 brand-button">';
+		echo '<select class="btn teal lighten-2 brand-button change">';
 		echo '<option class="placeholder" selected disabled value="">Pick a Brand!</option>';
 		foreach ($brandsList as $currBrand) {
 			echo '<option>' . $currBrand['name'] . '</option>';
