@@ -42,7 +42,7 @@
                                     <select  class="btn pink lighten-2" name="continent" onchange="formChange(continentSelect)">
 
                                         <?php
-                                            $continentGate->printList(trim($_GET['continent']));
+                                            $continentGate->printContinentDropdown(trim($_GET['continent']));
                                         ?>
 
                                     </select>

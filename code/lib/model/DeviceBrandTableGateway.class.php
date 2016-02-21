@@ -67,7 +67,35 @@ class DeviceBrandTableGateway extends TableDataGateway
 		echo '</select>'; 
    
 }
+    //Outputs a option list of brands.
+    public function printBrandDropdown($selectedBrand = null)
+    {
+        if($selectedBrand == null) {
+            echo '<option class="placeholder" selected disabled value="">Select Brand</option>';
+        } else {
+            echo '<option class="placeholder" disabled value="">Select Brand</option>';
+        }
+        $brands = $this->getDeviceBrands();
+        foreach($brands as $brand)
+        {
+            if($brand['ContinentCode'] == $selectedBrand){
+                echo '<option value="' . $brand['name'] . '" selected>' . $brand['name'] . '</option>';
+            } else {
+                echo '<option value="' . $brand['name'] . '">' . $brand['name'] . '</option>';
+            }
+        }
 
+    }
+    //Prints the vists for the brand selected.
+    public function printBrandVists($selectedBrand = null)
+    {
+        if($selectedBrand != null) {
+            echo '<p class="right">Visits for '.$selectedBrand.': <span class="teal-text text-darken-1 bold">'.$this->getBrandVisits($selectedBrand)['visitCount'].'</span></p>';
+        }
+
+    }
 }
+
+
 
 ?>

@@ -19,7 +19,18 @@
 				<div class="card-panel teal lighten-2 cardTwo z-depth-2">
 				  <div class=" white blue-grey-text text-darken-4 card-inner-content" id="parent1">
 					<h1 class="card-header">Visitors by Device Used</h1><br/>
-					<?php $result3 = $gate2->displaySelect($result2); ?>
+                      <form action="index.php" method="get" id="brandSelect" target="_self">
+                          <div class="input-field col s7">
+                              <select  class="btn teal lighten-2" name="brand" onchange="formChange('brandSelect')">
+                              <?php
+                                $gate2->printBrandDropdown(trim($_GET['brand']));
+                              ?>
+                              </select>
+                          </div>
+                      </form>
+                      <?php
+                        $gate2->printBrandVists(trim($_GET['brand']));
+                      ?>
 				  </div>
 				</div><!--/cardTwo: Device Brands-->
 			  </div>
@@ -32,25 +43,17 @@
 					<div class="card-panel pink lighten-2 CardThree z-depth-2">
 						<div class="white blue-grey-text text-darken-4 card-inner-content">
 							<h1 class="card-header">Visitors by Continents</h1><br/>
-							<!-- REMOVE: Make Dynamic Dropdown Trigger -->
-<!--							<a class="dropdown-button btn pink lighten-2" href="#" data-activates="dropdown-continents">Pick a Continent!</a>-->
-
-							<!-- REMOVE: Make Dynamic Dropdown Structure -->
-<!--							<ul id="dropdown-continents" class="dropdown-content">-->
                             <form action="index.php" method="get" id="continentSelect" target="_self">
                                 <div class="input-field col s7">
-                                    <select  class="btn pink lighten-2" name="continent" onchange="continentChange()">
+                                    <select  class="btn pink lighten-2" name="continent" onchange="formChange('continentSelect')">
 
                                         <?php
-                                            $continentGate->printList(trim($_GET['continent']));
+                                            $continentGate->printContinentDropdown(trim($_GET['continent']));
                                         ?>
 
                                     </select>
                                 </div>
                             </form>
-<!--							</ul>-->
-
-							<!-- REMOVE: Make this dynamic in JS -->
 							<table class="striped highlight responsive-table table-hover-continents">
 								<thead>
 								<tr>
