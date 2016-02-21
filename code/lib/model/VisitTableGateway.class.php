@@ -68,8 +68,7 @@ class VisitTableGateway extends TableDataGateway
 	}
 	
 	//Outputs a <table> to screen with browser visit statistics
-	public function displayBrowserStatisticsTable()
-   {
+	public function displayBrowserStatisticsTable() {
 	   $totalVisits = $this->getTotalVisits();
 	   $list = $this->getListOfBrowsers();
 	   $totalVisits = $this->getTotalVisits();
@@ -104,6 +103,17 @@ class VisitTableGateway extends TableDataGateway
 		echo '</tbody></table>';
 			
    }
+   
+	public function getVisits() {
+		$sql = 'SELECT *
+				FROM visits
+				LIMIT 10';
+		
+		//convert records to array
+		$result = $this->dbAdapter->fetchAsArray($sql, null);
+
+		return $result;
+	}
 
 }
 
