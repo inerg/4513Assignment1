@@ -5,18 +5,16 @@
 <?php
 session_start();
 
-//$test = visitsCriteria();
-//foreach ($test as $a)
-//{
-//	echo $a;
-//}
-
-
 ?>
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script src="jquery-1.12.0.min.js"></script>
+
+
+
+
 <script type="text/javascript">
+
 
 
 	//Draw the first chart (visits for month selected in drop-down list)
@@ -80,6 +78,37 @@ function outputGeoVisitsChart() {
 }
 
 
+
+
+function drawGroupedColumnChart() {
+	    	    
+	var data = new google.visualization.DataTable();
+	data.addColumn('string', 'A');
+	data.addColumn('number', 'Jan');  
+	data.addColumn('number', 'May');
+	data.addColumn('number', 'Sept');
+
+	data.addRows([
+		['China', 1000, 1100, 630],
+		['France', 390, 430, 1300],
+		['Spain', 190, 222, 360],
+	]);
+	 
+
+      var options = {
+		title: 'Site Visits 2016',
+		hAxis: {title: 'Country'},
+        height:400,
+        focusTarget: 'category', 
+      };     
+
+	  
+	var chart = new google.visualization.ColumnChart(document.getElementById('card3'));
+    chart.draw(data, options);	  
+}
+
+
+
 	
 	//Call the outputSelectedMonthVisitsChart chart	
 	google.load('visualization', "1", {'packages':['corechart']});			
@@ -89,8 +118,13 @@ function outputGeoVisitsChart() {
 	google.load("visualization", "1", {packages:["geochart"]});
 	google.setOnLoadCallback(outputGeoVisitsChart);
 
+	
 
+	//Call the drawGroupedColumnChart chart
+	google.load('visualization', '1', {packages: ['corechart', 'bar']});
+	google.setOnLoadCallback(drawGroupedColumnChart);
 
+	
     </script>
 
 
@@ -103,17 +137,16 @@ function outputGeoVisitsChart() {
 			  <div class="col s12">
 				<div class="card-panel orange lighten-2 cardOne z-depth-2">
 				  <div class="white blue-grey-text text-darken-4 card-inner-content" id="card1">
-					
+
 				  </div>
-				</div><!--/cardOne: Monthly Visits Chart-->
+				</div><!--/cardOne: Monthly Visits Chart -->
 			  </div>
 
 			  <div class="col s12">
 				<div class="card-panel teal lighten-2 cardTwo z-depth-2">
-				  <div class="white blue-grey-text text-darken-4 card-inner-content" id="parent1">
-             
-			 
-                      </div>
+				  <div class=" white blue-grey-text text-darken-4 card-inner-content" id="parent1">
+
+
 				  </div>
 				</div><!--/cardTwo: Geo Chart-->
 			  </div>
@@ -124,10 +157,9 @@ function outputGeoVisitsChart() {
 			<div class="col l5 m6 s12">
 				<div class="col s12">
 					<div class="card-panel pink lighten-2 CardThree z-depth-2">
-						<div class="white blue-grey-text text-darken-4 card-inner-content">
-							<h1 class="card-header">Card 3</h1><br/>
-                            
+						<div class="white blue-grey-text text-darken-4 card-inner-content" id="card3">
 	
+
 						</div>
 					</div><!--/CardThree: Column Chart-->
 				</div><!--/Row 2: Column 1: Column 1.A-->

@@ -124,6 +124,19 @@ class VisitTableGateway extends TableDataGateway
 
 		return $result;
 	}
+	
+	
+	public function getVisitsWithBegin($searchVariable) {
+		$sql = 'SELECT * 
+				FROM visits 
+				WHERE CONCAT_WS(id, ip_address, country_code, visit_date, visit_time, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"';
+	
+	
+		//convert records to array
+		$result = $this->dbAdapter->fetchAsArray($sql, null);
+
+		return $result;
+	}
 
 }
 

@@ -28,17 +28,33 @@ $visitorGate = new VisitTableGateway($dbAdapter);
 if(!empty($_GET)){
 	$validCriteria = isCorrectQueryStringInfo($_GET, "visits");
 
-	if($validCriteria) {
+	if($validCriteria || ISSET($_GET['begin'])) {
 		$whereClause = key($_GET);
 		$searchVariable = array_shift($_GET);
-		$results = $visitorGate->getVisitsByQuery($whereClause ,$searchVariable);
 		
-		if(empty($results)) {
-			deliver_response(200, "requested data not found", NULL);
+		if($whereClause == 'begin')
+		{
+			$results = $visitorGate->getVisitsWithBegin($searchVariable);
+		
+			if(empty($results)) {
+				deliver_response(200, "requested data not found", NULL);
+			}
+			else {
+				echo json_encode($results, JSON_PRETTY_PRINT);
+			}
 		}
 		else {
-			echo json_encode($results, JSON_PRETTY_PRINT);
-		}
+		
+		
+			$results = $visitorGate->getVisitsByQuery($whereClause ,$searchVariable);
+		
+			if(empty($results)) {
+				deliver_response(200, "requested data not found", NULL);
+			}
+			else {
+				echo json_encode($results, JSON_PRETTY_PRINT);
+			}
+			}
 	}
 	else {
 		deliver_response(200, "requested data not found", NULL);
