@@ -25,7 +25,27 @@ class BrowserTableGateway extends TableDataGateway
    protected function getPrimaryKeyName() {
       return "id";
    }
+	
+	public function getBrowsers() {
+		$sql = 'SELECT *
+				FROM browsers
+				LIMIT 100';
+		
+		//convert records to array
+		$result = $this->dbAdapter->fetchAsArray($sql, null);
 
+		return $result;
+	}
+	
+	public function getBrowsersByQuery($whereClause, $searchVariable) {
+		$sql = 'SELECT * ' . ' FROM browsers ' .
+				' WHERE ' . $whereClause . ' = "'. $searchVariable . '"';
+		
+		//convert records to array
+		$result = $this->dbAdapter->fetchAsArray($sql, null);
+
+		return $result;
+	}
 
 }
 

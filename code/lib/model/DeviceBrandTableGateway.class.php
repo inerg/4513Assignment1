@@ -85,8 +85,27 @@ class DeviceBrandTableGateway extends TableDataGateway
         }
 
     }
+	
+	public function getDeviceBrandsInfo() {
+		$sql = 'SELECT *
+				FROM device_brands
+				LIMIT 100';
+		
+		//convert records to array
+		$result = $this->dbAdapter->fetchAsArray($sql, null);
+
+		return $result;
+	}
+	
+	public function getDeviceBrandsByQuery($whereClause, $searchVariable) {
+		$sql = 'SELECT * ' . ' FROM device_brands ' .
+				' WHERE ' . $whereClause . ' = "'. $searchVariable . '"';
+		
+		//convert records to array
+		$result = $this->dbAdapter->fetchAsArray($sql, null);
+
+		return $result;
+	}
 }
-
-
 
 ?>

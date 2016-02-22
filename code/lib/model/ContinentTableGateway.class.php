@@ -81,13 +81,29 @@ class ContinentTableGateway extends TableDataGateway
            {
                echo '<tr><td>'.$visitCount['CountryName'].'</td><td class="pink-text text-darken-1 bold">'.$visitCount['VisitCount'].'</td></tr>';
            }
-
        }
-
-
-
    }
+	
+	public function getContinents() {
+		$sql = 'SELECT *
+				FROM continents
+				LIMIT 100';
+		
+		//convert records to array
+		$result = $this->dbAdapter->fetchAsArray($sql, null);
 
+		return $result;
+	}
+	
+	public function getContinentsByQuery($whereClause, $searchVariable) {
+		$sql = 'SELECT * ' . ' FROM continents ' .
+				' WHERE ' . $whereClause . ' = "'. $searchVariable . '"';
+		
+		//convert records to array
+		$result = $this->dbAdapter->fetchAsArray($sql, null);
+
+		return $result;
+	}
 }
 
 ?>

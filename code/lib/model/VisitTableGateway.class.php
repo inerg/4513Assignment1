@@ -107,7 +107,17 @@ class VisitTableGateway extends TableDataGateway
 	public function getVisits() {
 		$sql = 'SELECT *
 				FROM visits
-				LIMIT 10';
+				LIMIT 100';
+		
+		//convert records to array
+		$result = $this->dbAdapter->fetchAsArray($sql, null);
+
+		return $result;
+	}
+	
+	public function getVisitsByQuery($whereClause, $searchVariable) {
+		$sql = 'SELECT * ' . ' FROM visits ' .
+				' WHERE ' . $whereClause . ' = "'. $searchVariable . '"';
 		
 		//convert records to array
 		$result = $this->dbAdapter->fetchAsArray($sql, null);
