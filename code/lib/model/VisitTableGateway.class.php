@@ -126,20 +126,81 @@ class VisitTableGateway extends TableDataGateway
 	}
 	
 	
-	public function getCustomSearch($selectVal, $searchVariable, $groupBy) {
-		if($groupBy == NULL)
+	public function getCustomSearch($selectVal, $searchVariable, $groupBy, $having, $join) {
+		
+	if($join == NULL) {	//no joins used
+		if($groupBy == NULL) //groupBy not used
 		{
-			$sql = 'SELECT '.$selectVal. '
-				FROM visits 
-				WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"';
-			
-		}
-		else {
-			$sql = 'SELECT '.$selectVal. ' FROM visits 
+			if($having == NULL) //and not using having
+			{//echo "hit a";
+				$sql = 'SELECT '.$selectVal. '
+					FROM visits 
+					WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"';
+			}
+			else { //and using having
+			//echo "hit b";
+				$sql = 'SELECT '.$selectVal. '
+					FROM visits 
 					WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"
-					GROUP BY '.$groupBy;
+					HAVING '.$having;
+				
+			}
 		}
-	
+		else { //groupBy used
+			if($having != NULL) {//and having used
+			//echo "hit c";
+				$sql = 'SELECT '.$selectVal. ' 
+						FROM visits 
+						WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"
+						GROUP BY '.$groupBy.' 
+						HAVING '.$having;
+			}
+			if($having == NULL) {//and having not used
+			//echo "hit d";
+				$sql = 'SELECT '.$selectVal. ' 
+						FROM visits 
+						WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"
+						GROUP BY '.$groupBy;
+			}
+		}
+	}
+	else { //joins used
+		if($groupBy == NULL) //not using groupBy
+		{
+			if($having == NULL) //and not using having
+			{//echo "hit e";
+				$sql = 'SELECT '.$selectVal. '
+					FROM visits INNER JOIN '.$join.' 
+					WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"';
+			}
+			else {//and using having
+			//echo "hit f";
+				$sql = 'SELECT '.$selectVal. '
+					FROM visits  INNER JOIN '.$join.'
+					WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"
+					HAVING '.$having;
+				
+			}
+		}
+		else { //groupBy used
+			if($having != NULL) {//and having used
+			//echo "hit g";
+				$sql = 'SELECT '.$selectVal. ' 
+						FROM visits INNER JOIN '.$join.'
+						WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"
+						GROUP BY '.$groupBy.'
+						HAVING '.$having;
+			}
+			if($having == NULL) {//and having not used
+			//echo "hit h";
+				$sql = 'SELECT '.$selectVal. ' 
+						FROM visits INNER JOIN '.$join.'
+						WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"
+						GROUP BY '.$groupBy;
+			}
+		}
+		
+	}
 		//convert records to array
 		$result = $this->dbAdapter->fetchAsArray($sql, null);
 

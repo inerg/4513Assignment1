@@ -34,15 +34,71 @@ if(!empty($_GET)){
 		
 		if($whereClause == 'custom')
 		{
-			if(ISSET($_GET['select'])) {
-				$selectVal = $_GET['select'];
-				if(!ISSET($_GET['groupBy'])) {
-					$results = $visitorGate->getCustomSearch($selectVal, $searchVariable, NULL);
+			if(!ISSET($_GET['join'])) { //not using join
+				if(ISSET($_GET['select'])) {
+					$selectVal = $_GET['select'];
+					if(!ISSET($_GET['groupBy'])) { //if not using groupBy
+						if(!ISSET($_GET['having'])) {//and not using having
+						//echo "used 1";
+							$results = $visitorGate->getCustomSearch($selectVal, $searchVariable, NULL, NULL, NULL);
+						}
+					}
+					if(ISSET($_GET['having'])) {//if using having
+						if(!ISSET($_GET['groupBy'])) {//and not groupBy
+							$having = $_GET['having'];
+							//echo "used 2";
+							$results = $visitorGate->getCustomSearch($selectVal, $searchVariable, NULL, $having, NULL);
+						}
+					}
+					if(ISSET($_GET['groupBy'])) { //if using groupBy
+						if(!ISSET($_GET['having'])) {//and not having
+							$groupBy = $_GET['groupBy'];
+							//echo "used 3";
+							$results = $visitorGate->getCustomSearch($selectVal, $searchVariable, $groupBy, NULL, NULL);
+						}
+					}
+					if(ISSET($_GET['groupBy'])) {//using groupBy
+						If(ISSET($_GET['having'])) {//as well as having
+							$having = $_GET['having'];
+							$groupBy = $_GET['groupBy'];
+							//echo "used 3.5";
+							$results = $visitorGate->getCustomSearch($selectVal, $searchVariable, $groupBy, $having, NULL);
+						}
+					}
 				}
-				if(ISSET($_GET['groupBy'])) {
-					$groupBy = $_GET['groupBy'];
-					$results = $visitorGate->getCustomSearch($selectVal, $searchVariable, $groupBy);
-				}
+			}
+			else {//using join
+				if(ISSET($_GET['select'])) {
+					$join = $_GET['join'];
+					$selectVal = $_GET['select'];
+					if(!ISSET($_GET['groupBy'])) {
+						if(!ISSET($_GET['having'])) {
+							//echo "used 4";
+							$results = $visitorGate->getCustomSearch($selectVal, $searchVariable, NULL, NULL, $join);
+						}
+					}
+					if(ISSET($_GET['having'])) { //using having
+						$having = $_GET['having'];
+						if(!ISSET($_GET['groupBy'])) {//and not groupBy
+						//echo "used 5";
+							$results = $visitorGate->getCustomSearch($selectVal, $searchVariable, NULL, $having, $join);
+						}
+						if(ISSET($_GET['groupBy'])) {//using both groupBy and Having
+							$groupBy = $_GET['groupBy'];
+							//echo "used 6";
+							$results = $visitorGate->getCustomSearch($selectVal, $searchVariable, $groupBy, $having, $join);
+						}
+					}
+					if(ISSET($_GET['groupBy'])) { //using groupBy
+						if(!ISSET($_GET['having']))//and not having
+						{
+							$groupBy = $_GET['groupBy'];
+							//echo "used 7";
+							$results = $visitorGate->getCustomSearch($selectVal, $searchVariable, $groupBy, NULL, $join);
+						}
+					}
+					
+				}			
 			}
 			
 			if(!ISSET($_GET['select'])) {
