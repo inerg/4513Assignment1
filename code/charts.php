@@ -8,6 +8,7 @@ session_start();
 ?>
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
 <script src="jquery-1.12.0.min.js"></script>
 <script type="text/javascript">
 
@@ -107,7 +108,7 @@ function drawGroupedColumnChart() {
 
 function handleMonthChangeRedraw(value) {
 		
-	$.getJSON('lib/serviceVisits.php?month=-'+value+'-',
+	$.getJSON('lib/serviceVisits.php?custom=-'+value+'-&select=COUNT(*) AS count&groupBy=visit_date',
         function(data) {
 				//console.log(data);
 			outputSelectedMonthVisitsChart(data);
@@ -120,7 +121,7 @@ function handleMonthChangeRedraw(value) {
 	
 	
 	//Call the outputSelectedMonthVisitsChart chart, using January as its initial value
-	$.getJSON('lib/serviceVisits.php?month=-01-',
+	$.getJSON('lib/serviceVisits.php?custom=-01-&select=COUNT(*) AS count&groupBy=visit_date',
         function(data) {			
 			google.load('visualization', "1", {'packages':['corechart']});			
 			google.setOnLoadCallback(outputSelectedMonthVisitsChart(data));
@@ -146,7 +147,7 @@ function handleMonthChangeRedraw(value) {
 <!-- Container: Main -->
 <div class="container">
 	<div class="row">
-		<div class="col l7 m6 s12">
+		<div class="col l6 m6 s12">
 			<div class="row">
 			  <div class="col s12">
 				<div class="card-panel orange lighten-2 cardOne z-depth-2">
@@ -188,7 +189,7 @@ function handleMonthChangeRedraw(value) {
 		</div><!--/Main Row: Column 1-->
 	
 		<div class="row">
-			<div class="col l5 m6 s12">
+			<div class="col l6 m6 s12">
 				<div class="col s12">
 					<div class="card-panel pink lighten-2 CardThree z-depth-2">
 						<div class="white blue-grey-text text-darken-4 card-inner-content" id="card3">
