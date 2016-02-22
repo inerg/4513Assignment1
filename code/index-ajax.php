@@ -17,7 +17,7 @@
 
 			  <div class="col s12">
 				<div class="card-panel teal lighten-2 cardTwo z-depth-2">
-				  <div class=" white blue-grey-text text-darken-4 card-inner-content" id="parent1">
+				  <div class=" white blue-grey-text text-darken-4 card-inner-content" id="brands">
 					<h1 class="card-header">Visitors by Device Used</h1><br/>
 					<?php $deviceBrandGate->displaySelect($allDeviceBrands); ?>
 				  </div>
@@ -37,9 +37,8 @@
 
 							<!-- REMOVE: Make Dynamic Dropdown Structure -->
 <!--							<ul id="dropdown-continents" class="dropdown-content">-->
-                            <form action="index.php" method="get" id="continentSelect" target="_self">
-                                <div class="input-field col s7">
-                                    <select  class="btn pink lighten-2 dropdown-button-widths" name="continent" onchange="formChange(continentSelect)">
+                                <div class="input-field col s7" id="continent">
+                                    <select  class="btn pink lighten-2 dropdown-button-widths change" name="continent">
 
                                         <?php
                                             $continentGate->printContinentDropdown(trim($_GET['continent']));
@@ -47,7 +46,6 @@
 
                                     </select>
                                 </div>
-                            </form>
 <!--							</ul>-->
 
 							<!-- REMOVE: Make this dynamic in JS -->
