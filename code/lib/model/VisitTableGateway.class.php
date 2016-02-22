@@ -126,12 +126,19 @@ class VisitTableGateway extends TableDataGateway
 	}
 	
 	
-	public function getVisitsByMonth($searchVariable) {
-		$sql = 'SELECT COUNT(*) AS count
+	public function getCustomSearch($selectVal, $searchVariable, $groupBy) {
+		if($groupBy == NULL)
+		{
+			$sql = 'SELECT '.$selectVal. '
 				FROM visits 
-				WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"
-				GROUP BY visit_date';
-	
+				WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"';
+			
+		}
+		else {
+			$sql = 'SELECT '.$selectVal. ' FROM visits 
+					WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"
+					GROUP BY '.$groupBy;
+		}
 	
 		//convert records to array
 		$result = $this->dbAdapter->fetchAsArray($sql, null);
