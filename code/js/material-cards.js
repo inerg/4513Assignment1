@@ -1,25 +1,47 @@
 window.onload=function(){
 
-document.querySelector('.change').addEventListener("change", function() {
+document.querySelector('.change').addEventListener("change", function(e) {
+
+    var id = this.parentNode.getAttribute("id");
+    var div
+    var toRemove;
+    var data;
+    if(id == "brands"){
+        div = document.querySelector('#brands');
+        toRemove = document.querySelector("p#p");
+        data = {brand: this.value};
+    }
+    else{
+        if(id == "continent"){
+            div = document.querySelector('#continents');
+            toRemove = document.querySelector("#countries");
+            data = {continent: this.value};
+        }
+    }
+    if(toRemove != null) {
+        div.removeChild(toRemove);
+    }
 	
-	var div = document.querySelector('#parent1');
-	var toRemove = document.querySelector("p#p");
-	if(toRemove != null) {
-		div.removeChild(toRemove);
-	}
-	
-	asyncAJAXRequest(this.value);
+	asyncAJAXRequest(data, id);
 });
 
-function asyncAJAXRequest(brandName) {
+function asyncAJAXRequest(data, id) {
 	$.ajax({
 		type: "post",
 		url: "async_request.php",
 		async: true,
-		data: {brand: brandName}, 
+		data: data,
 		success: function(receivedArray) {
 		var array1 = JSON.parse(receivedArray); //this line and
-		displayBrandVisitData(array1); 	//this call are here to keep the code that reads the array from executing before
+        if(id == "brands"){
+            displayBrandVisitData(array1);
+        }
+        else{
+            if(id == "continent"){
+                displayContinentVisitData(array1);
+            }
+        }
+             	//these calls are here to keep the code that reads the array from executing before
       }									//the AJAX request has returned.
     });
 }
@@ -40,4 +62,42 @@ function displayBrandVisitData(visitsArray) {
 	select.parentNode.insertBefore(para, select.nextSibling);
 }
 
-};
+function displayContinentVisitData(visitsArray) {
+    var table = document.createElement("table");
+    table.id = "countries";
+    table.className = "striped highlight responsive-table table-hover-continents";
+    var tableHead = document.createElement("thead");
+    var row = document.createElement("tr");
+    row.appendChild(document.createElement("th").innerHTML("Countries").setAttribute("data-field", "id"));
+    row.appendChild(document.createElement("th").innerHTML("Visitor Count").setAttribute("data-field", "name"));
+
+    tableHead.appendChild(row)
+    table.appendChild(tableHead);
+
+    var tableBody = document.createElement("tbody");
+    //table body/
+
+    for(var i = 0; i < visitsArray.length; i++)
+    {
+        var row = document.createElement("tr");
+        var column = document.createElement("td");
+        column.innerHTML = visitsArray[i].CountryName;
+
+        row.appendChild(column);
+
+        column = document.createElement("td");
+        column.addClass("pink-text text-darken-1 bold");
+        column.innerHTML = visitsArray[i].VisitCount;
+
+        row.appendChild(column);
+
+        tableBody.appendChild(row);
+
+    }
+
+    table.appendChild(tableBody);
+    var select = document.querySelector("#continents");
+
+    select.parentNode.appendChild(table);
+
+};}

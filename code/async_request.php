@@ -12,5 +12,19 @@ if(isset($_POST['brand']) && !empty($_POST['brand'])) {
 
 	echo json_encode($stringToConvert);
 	}
+else
+{
+    if(isset($_POST['continent']) && !empty($_POST['continent']))
+    {
+        $passedValue = $_POST['continent'];
+
+        $continentGate = new ContinentTableGateway($dbAdapter);
+        $result = $continentGate->getVisitsByContinentCode($passedValue);
+
+        $stringToConvert = array($result[0]['CountryName'], $result[0]['VisitCount']);
+
+        echo json_encode($stringToConvert);
+    }
+}
 	
 ?>

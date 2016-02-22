@@ -17,7 +17,7 @@
 
 			  <div class="col s12">
 				<div class="card-panel teal lighten-2 cardTwo z-depth-2">
-				  <div class=" white blue-grey-text text-darken-4 card-inner-content" id="parent1">
+				  <div class=" white blue-grey-text text-darken-4 card-inner-content" id="brands">
 					<h1 class="card-header">Visitors by Device Used</h1><br/>
 					<?php $deviceBrandGate->displaySelect($allDeviceBrands); ?>
 				  </div>
@@ -30,16 +30,15 @@
 			<div class="col l5 m6 s12">
 				<div class="col s12">
 					<div class="card-panel pink lighten-2 CardThree z-depth-2">
-						<div class="white blue-grey-text text-darken-4 card-inner-content">
+						<div class="white blue-grey-text text-darken-4 card-inner-content" id="continents">
 							<h1 class="card-header">Visitors by Continents</h1><br/>
 							<!-- REMOVE: Make Dynamic Dropdown Trigger -->
 <!--							<a class="dropdown-button btn pink lighten-2" href="#" data-activates="dropdown-continents">Pick a Continent!</a>-->
 
 							<!-- REMOVE: Make Dynamic Dropdown Structure -->
 <!--							<ul id="dropdown-continents" class="dropdown-content">-->
-                            <form action="index.php" method="get" id="continentSelect" target="_self">
-                                <div class="input-field col s7">
-                                    <select  class="btn pink lighten-2 dropdown-button-widths" name="continent" onchange="formChange(continentSelect)">
+                                <div class="input-field col s7" id="continent">
+                                    <select  class="btn pink lighten-2 dropdown-button-widths change" name="continent">
 
                                         <?php
                                             $continentGate->printContinentDropdown(trim($_GET['continent']));
@@ -47,18 +46,17 @@
 
                                     </select>
                                 </div>
-                            </form>
 <!--							</ul>-->
 
 							<!-- REMOVE: Make this dynamic in JS -->
-							<table class="striped highlight responsive-table table-hover-continents">
-								<thead>
-								<tr>
-									<th data-field="id">Countries</th>
-									<th data-field="name">Visitor Count</th>
-								</tr>
-								</thead>
-								<tbody>
+							<table class="striped highlight responsive-table table-hover-continents" id="countries">
+<!--								<thead>-->
+<!--								<tr>-->
+<!--									<th data-field="id">Countries</th>-->
+<!--									<th data-field="name">Visitor Count</th>-->
+<!--								</tr>-->
+<!--								</thead>-->
+<!--								<tbody>-->
                                 <?php
 								if(ISSET($_GET['continent']))
 								{
