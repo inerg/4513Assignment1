@@ -9,34 +9,30 @@ session_start();
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script src="jquery-1.12.0.min.js"></script>
-
-
-
-
 <script type="text/javascript">
 
 
+		
 
 	//Draw the first chart (visits for month selected in drop-down list)
-function outputSelectedMonthVisitsChart() { 
+function outputSelectedMonthVisitsChart(JSONdata) { 
 		  
 	//Make a table for the data
 	var data = new google.visualization.DataTable();
 	data.addColumn('string', 'A');
 	data.addColumn('number', 'Daily Visits');
 	
-	for(index=1; index < 31; index++) //For each day of the month, add a row to the table with appropriate data
+	for(var index=1; index < JSONdata.length; index++) //For each day of the month, add a row to the table with appropriate data
 	{
 		var name = index.toString();
-		var num = Math.floor((Math.random() * 40) + 1); //change later. Random values for now
-			
-		var rowData = [[name, num]]; //create a row
-			
+		var num = parseInt(JSONdata[index-1].count);
+
+		var rowData = [[name, num]]; //create a row			
 		data.addRows(rowData); //add in the row
 	}
 		
 	var options = {
-		title:"<Insert month here> visits", //Change later 
+		title:"Visits for Selected Month:", //Change later 
 		height:400,
 		hAxis: {title: 'Day'}
 		};
@@ -46,7 +42,6 @@ function outputSelectedMonthVisitsChart() {
 	var chart = new google.visualization.AreaChart(document.getElementById('card1'));
 	chart.draw(data, options); 
 }
-
 
 
 
@@ -109,10 +104,29 @@ function drawGroupedColumnChart() {
 
 
 
+
+function handleMonthChangeRedraw(value) {
+		
+	$.getJSON('lib/serviceVisits.php?begin=-'+value+'-',
+        function(data) {
+				console.log(data);
+			outputSelectedMonthVisitsChart(data);
+        });
+}
 	
-	//Call the outputSelectedMonthVisitsChart chart	
-	google.load('visualization', "1", {'packages':['corechart']});			
-	google.setOnLoadCallback(outputSelectedMonthVisitsChart);
+	
+	
+	
+	
+	
+	//Call the outputSelectedMonthVisitsChart chart, using January as its initial value
+	$.getJSON('lib/serviceVisits.php?begin=-01-',
+        function(data) {			
+			google.load('visualization', "1", {'packages':['corechart']});			
+			google.setOnLoadCallback(outputSelectedMonthVisitsChart(data));
+        });
+		
+	
 
 	//Call the outputGeoVisitsChart chart
 	google.load("visualization", "1", {packages:["geochart"]});
@@ -122,10 +136,10 @@ function drawGroupedColumnChart() {
 
 	//Call the drawGroupedColumnChart chart
 	google.load('visualization', '1', {packages: ['corechart', 'bar']});
-	google.setOnLoadCallback(drawGroupedColumnChart);
-
+	google.setOnLoadCallback(drawGroupedColumnChart);	
 	
-    </script>
+	
+</script>
 
 
 
@@ -136,17 +150,37 @@ function drawGroupedColumnChart() {
 			<div class="row">
 			  <div class="col s12">
 				<div class="card-panel orange lighten-2 cardOne z-depth-2">
-				  <div class="white blue-grey-text text-darken-4 card-inner-content" id="card1">
-
+				  <div class="white blue-grey-text text-darken-4 card-inner-content">
+					<div>
+						<select  class="btn pink lighten-2 dropdown-button-widths" name="continent" onchange="handleMonthChangeRedraw(this.value)">
+							<option selected disabled>Select a Month</option>
+							<option value="01">January</option>
+							<option value="02">February</option>
+							<option value="03">March</option>
+							<option value="04">April</option>
+							<option value="05">May</option>
+							<option value="06">June</option>
+							<option value="07">July</option>
+							<option value="08">August</option>
+							<option value="09">September</option>
+							<option value="10">October</option>
+							<option value="11">November</option>
+							<option value="12">December</option>
+						</select>
+					</div>
+					<div id="card1">
+						
+					</div>
 				  </div>
 				</div><!--/cardOne: Monthly Visits Chart -->
 			  </div>
-
+			  
 			  <div class="col s12">
 				<div class="card-panel teal lighten-2 cardTwo z-depth-2">
-				  <div class=" white blue-grey-text text-darken-4 card-inner-content" id="parent1">
-
-
+				  <div class=" white blue-grey-text text-darken-4 card-inner-content">
+				  <div id="parent1">
+				  </div>
+				  <div></div>
 				  </div>
 				</div><!--/cardTwo: Geo Chart-->
 			  </div>

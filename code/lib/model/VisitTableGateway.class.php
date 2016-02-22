@@ -127,9 +127,10 @@ class VisitTableGateway extends TableDataGateway
 	
 	
 	public function getVisitsWithBegin($searchVariable) {
-		$sql = 'SELECT * 
+		$sql = 'SELECT COUNT(*) AS count
 				FROM visits 
-				WHERE CONCAT_WS(id, ip_address, country_code, visit_date, visit_time, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"';
+				WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"
+				GROUP BY visit_date';
 	
 	
 		//convert records to array
