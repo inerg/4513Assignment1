@@ -74,6 +74,13 @@ class ContinentTableGateway extends TableDataGateway
 	//Outputs a table of the visits by country based on the coninent.
 	public function printVisitList($selectedContinent = null)
    {
+       echo '<thead>
+                <tr>
+                    <th data-field="id">Countries</th>
+                    <th data-field="name">Visitor Count</th>
+                </tr>
+                </thead>
+                <tbody>';
 	   if($selectedContinent != null) {
            $visitsCount = $this->getVisitsByContinentCode($selectedContinent);
 
@@ -82,6 +89,7 @@ class ContinentTableGateway extends TableDataGateway
                echo '<tr><td>'.$visitCount['CountryName'].'</td><td class="pink-text text-darken-1 bold">'.$visitCount['VisitCount'].'</td></tr>';
            }
        }
+       echo '</tbody>';
    }
 	
 	public function getContinents() {

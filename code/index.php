@@ -62,20 +62,14 @@
                                 </div>
                             </form>
 							<table class="striped highlight responsive-table table-hover-continents">
-								<thead>
-								<tr>
-									<th data-field="id">Countries</th>
-									<th data-field="name">Visitor Count</th>
-								</tr>
-								</thead>
-								<tbody>
+
                                 <?php
 								if(ISSET($_GET['continent']))
 								{
                                     $continentGate->printVisitList($_GET['continent']);
                                 }
 								?>
-								</tbody>
+
 							</table>
 						</div>
 					</div><!--/CardThree: Continents-->
