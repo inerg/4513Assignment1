@@ -60,8 +60,11 @@
 								</thead>
 								<tbody>
                                 <?php
+								if(ISSET($_GET['continent']))
+								{
                                     $continentGate->printVisitList($_GET['continent']);
-                                ?>
+                                }
+								?>
 								</tbody>
 							</table>
 						</div>
