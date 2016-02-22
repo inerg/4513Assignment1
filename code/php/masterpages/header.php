@@ -12,7 +12,8 @@
 	<!--Css Files-->
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 	<link type="text/css" rel="stylesheet" href="css/style.css">
-	
+	<link type="image/x-icon" rel="icon" href="img/favicon.ico">
+
 	<!--Import Google Icon Font-->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	

@@ -23,6 +23,7 @@
 						<li class="collection-item"><a href="https://scotch.io/tutorials/make-material-design-websites-with-the-materialize-css-framework">Materialize CSS Tutorials</a></li>
 						<li class="collection-item"><a href="https://jquery.com/">jQuery</a></li>
 						<li class="collection-item"><a href="https://design.google.com/icons/">Google Icons</a></li>
+						<li class="collection-item"><a href="http://www.favicon.cc/">Favicon Generator</a></li>
 					</ul>
 				</div>
 			</div>
