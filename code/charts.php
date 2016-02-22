@@ -1,13 +1,23 @@
-<?php include 'lib/gateway_setup.php'; ?>
-<?php include 'php/masterpages/header.php'; ?>
+<?php include 'lib/gateway_setup.php'; 
+ include 'php/masterpages/header.php'; 
+ include 'lib/helpers/serviceUtilities.inc.php'; ?>
 
 <?php
 session_start();
 
+//$test = visitsCriteria();
+//foreach ($test as $a)
+//{
+//	echo $a;
+//}
+
+
 ?>
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="jquery-1.12.0.min.js"></script>
 <script type="text/javascript">
+
 
 	//Draw the first chart (visits for month selected in drop-down list)
 function outputSelectedMonthVisitsChart() { 
@@ -17,7 +27,7 @@ function outputSelectedMonthVisitsChart() {
 	data.addColumn('string', 'A');
 	data.addColumn('number', 'Daily Visits');
 	
-	for(index=1; index < 31; index++) //For each day of the month, add a row to the table with appropraite data
+	for(index=1; index < 31; index++) //For each day of the month, add a row to the table with appropriate data
 	{
 		var name = index.toString();
 		var num = Math.floor((Math.random() * 40) + 1); //change later. Random values for now
@@ -35,14 +45,51 @@ function outputSelectedMonthVisitsChart() {
 
 						
 	//Take the data table and make it a google chart, and then draw the chart to screen
-	var chart = new google.visualization.AreaChart(document.getElementById('test'));
+	var chart = new google.visualization.AreaChart(document.getElementById('card1'));
 	chart.draw(data, options); 
 }
+
+
+
+
+
+// Function for setting up and drawing the geographic chart with site visits
+function outputGeoVisitsChart() {
+  
+		
+	var data2 = google.visualization.arrayToDataTable(
+	[['Country', 'Popularity'],
+	['empty', 10]]); //Initial addition to the table because google charts doesn't work if you don't give
+					 //it a first set of values.
+		
+
+	
+	var rowData2 = [['Canada', 2050]];
+	var rowData3 = [['Russia', 4000]];
+			data2.addRows(rowData2);
+			data2.addRows(rowData3);
+			
+	
+	var options = {
+		height:500
+	};
+
+	//Create google geochart from table, then draw it.
+	var chart = new google.visualization.GeoChart(document.getElementById('parent1'));
+	chart.draw(data2, options);		
+}
+
 
 	
 	//Call the outputSelectedMonthVisitsChart chart	
 	google.load('visualization', "1", {'packages':['corechart']});			
 	google.setOnLoadCallback(outputSelectedMonthVisitsChart);
+
+	//Call the outputGeoVisitsChart chart
+	google.load("visualization", "1", {packages:["geochart"]});
+	google.setOnLoadCallback(outputGeoVisitsChart);
+
+
 
     </script>
 
@@ -55,7 +102,7 @@ function outputSelectedMonthVisitsChart() {
 			<div class="row">
 			  <div class="col s12">
 				<div class="card-panel orange lighten-2 cardOne z-depth-2">
-				  <div class="white blue-grey-text text-darken-4 card-inner-content" id="test">
+				  <div class="white blue-grey-text text-darken-4 card-inner-content" id="card1">
 					
 				  </div>
 				</div><!--/cardOne: Monthly Visits Chart-->
@@ -64,12 +111,8 @@ function outputSelectedMonthVisitsChart() {
 			  <div class="col s12">
 				<div class="card-panel teal lighten-2 cardTwo z-depth-2">
 				  <div class="white blue-grey-text text-darken-4 card-inner-content" id="parent1">
-                      <h1 class="card-header">Card 2</h1><br/>
-                      <div class="row">
-                          <div class="col s11">
-                              
-                        
-                          </div>
+             
+			 
                       </div>
 				  </div>
 				</div><!--/cardTwo: Geo Chart-->
