@@ -126,7 +126,7 @@ class VisitTableGateway extends TableDataGateway
 	}
 	
 	
-	public function getVisitsWithBegin($searchVariable) {
+	public function getVisitsByMonth($searchVariable) {
 		$sql = 'SELECT COUNT(*) AS count
 				FROM visits 
 				WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"

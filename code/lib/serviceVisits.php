@@ -28,13 +28,13 @@ $visitorGate = new VisitTableGateway($dbAdapter);
 if(!empty($_GET)){
 	$validCriteria = isCorrectQueryStringInfo($_GET, "visits");
 
-	if($validCriteria || ISSET($_GET['begin'])) {
+	if($validCriteria || ISSET($_GET['month'])) {
 		$whereClause = key($_GET);
 		$searchVariable = array_shift($_GET);
 		
-		if($whereClause == 'begin')
+		if($whereClause == 'month')
 		{
-			$results = $visitorGate->getVisitsWithBegin($searchVariable);
+			$results = $visitorGate->getVisitsByMonth($searchVariable);
 		
 			if(empty($results)) {
 				deliver_response(200, "requested data not found", NULL);

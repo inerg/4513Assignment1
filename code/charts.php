@@ -107,9 +107,9 @@ function drawGroupedColumnChart() {
 
 function handleMonthChangeRedraw(value) {
 		
-	$.getJSON('lib/serviceVisits.php?begin=-'+value+'-',
+	$.getJSON('lib/serviceVisits.php?month=-'+value+'-',
         function(data) {
-				console.log(data);
+				//console.log(data);
 			outputSelectedMonthVisitsChart(data);
         });
 }
@@ -120,7 +120,7 @@ function handleMonthChangeRedraw(value) {
 	
 	
 	//Call the outputSelectedMonthVisitsChart chart, using January as its initial value
-	$.getJSON('lib/serviceVisits.php?begin=-01-',
+	$.getJSON('lib/serviceVisits.php?month=-01-',
         function(data) {			
 			google.load('visualization', "1", {'packages':['corechart']});			
 			google.setOnLoadCallback(outputSelectedMonthVisitsChart(data));
