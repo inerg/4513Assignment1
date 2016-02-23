@@ -38,7 +38,7 @@ function outputGeoVisitsChart(JSONdata) {
 	['empty', 10]]); //Initial addition to the table because google charts doesn't work if you don't give
 					 //it a first set of values.
 		
-	for (i = 0; i < JSONdata.length; i++) { 		
+	for (i = 0; i < JSONdata.length; i++) { //for each item of JSONdata, create a row 		
 		var cName = JSONdata[i].CountryName;
 		var cNum = parseInt(JSONdata[i].count);
 		
@@ -60,28 +60,44 @@ function outputGeoVisitsChart(JSONdata) {
 
 
 
-
+var switchHolder = 0;
 function drawGroupedColumnChart(C1M1,C1M2,C1M3,C2M1,C2M2,C2M3,C3M1,C3M2,C3M3) {
 
 
+	if(switchHolder == 0) {switchHolder=1;}//Switch functionality
+	else if(switchHolder == 1) {switchHolder=0;}
+
+
+	console.log(switchHolder);
 	var monthArr = ["Jan", "May", "Sept"];
-	
-
-	var switchHolder=1;
-
-	    
+    
 	var data = new google.visualization.DataTable();
 	
-	if(switchHolder == 1) //Group Columns By Year
+	if(switchHolder == 1) //Group Columns By Country
 	{
-	data.addColumn('string', 'A');
-	data.addColumn('number', monthArr[0]);  
-	data.addColumn('number', monthArr[1]);
-	data.addColumn('number', monthArr[2]);
-
-	console.log(typeof(C1M1[0].count));
+		data.addColumn('string', 'A');
+		data.addColumn('number', monthArr[0]);  
+		data.addColumn('number', monthArr[1]);
+		data.addColumn('number', monthArr[2]);
+	}
+	if(switchHolder == 0) //Group Columns By Month
+	{
+		data.addColumn('string', 'A');
+		data.addColumn('number', C1M1[0].CountryName);  
+		data.addColumn('number', C2M1[0].CountryName);
+		data.addColumn('number', C3M1[0].CountryName);
+	}
 	
-	if(switchHolder == 1) //Group Columns By Year
+	if(switchHolder == 0) //Group Columns By Month
+	{
+		data.addRows([
+			[monthArr[0], parseInt(C1M1[0].count), parseInt(C2M1[0].count), parseInt(C3M1[0].count)],
+			[monthArr[1], parseInt(C1M2[0].count), parseInt(C2M2[0].count), parseInt(C3M2[0].count)],
+			[monthArr[2], parseInt(C1M3[0].count), parseInt(C2M3[0].count), parseInt(C3M3[0].count)],
+			
+		]);
+	}
+	if(switchHolder == 1) //Group Columns By Country
 	{
 		data.addRows([
 			[C1M1[0].CountryName, parseInt(C1M1[0].count), parseInt(C1M2[0].count), parseInt(C1M3[0].count)],
@@ -89,12 +105,15 @@ function drawGroupedColumnChart(C1M1,C1M2,C1M3,C2M1,C2M2,C2M3,C3M1,C3M2,C3M3) {
 			[C3M1[0].CountryName, parseInt(C3M1[0].count), parseInt(C3M2[0].count), parseInt(C3M3[0].count)],
 			
 		]);
-	  }
+	}
+	
+	if(switchHolder == 0) {var hAx = {title: 'Month'};}
+	if(switchHolder == 1) {var hAx = {title: 'Country'};}
+	
 	 
-
-      var options = {
+	var options = {
 		title: 'Site Visits 2016',
-		hAxis: {title: 'Country'},
+		hAxis: hAx,
         height:400,
         focusTarget: 'category', 
       };     
@@ -102,21 +121,24 @@ function drawGroupedColumnChart(C1M1,C1M2,C1M3,C2M1,C2M2,C2M3,C3M1,C3M2,C3M3) {
 	  
 	var chart = new google.visualization.ColumnChart(document.getElementById('card3'));
     chart.draw(data, options);	  
+
+
+	document.querySelector("#hide").style.visibility = 'visible';
 }
 
-}
+
 
 
 function handleMonthChangeRedraw(value, chartType) {
 	
-	if(chartType == "visitChart")
+	if(chartType == "visitChart")//if visits chart, redraw visits chart
 	{
 		$.getJSON('lib/serviceVisits.php?custom=-'+value+'-&select=COUNT(*) AS count&groupBy=visit_date',
         function(data) {
 			outputSelectedMonthVisitsChart(data);
         });
 	}
-	if(chartType == "countryVisitChart") {
+	if(chartType == "countryVisitChart") {//if geo chart, redraw country geo chart
 		$.getJSON('lib/serviceVisits.php?custom=-'+value+'-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&groupBy=country_code&having=COUNT(country_code)>=10',
         function(data) {
 			outputGeoVisitsChart(data);
@@ -130,9 +152,10 @@ var done2 = false;
 var done3 = false;
 function HandleFinishedSelects()
 {
+	//This function keeps track of how many selects are completed
     if(document.getElementById("selectToFill1").value != "Select a country" && done1 == false)
 	{	
-		counter = counter+1;
+		counter = counter+1; 
 		done1 = true;		
 	}
 	if(document.getElementById("selectToFill2").value!="Select a country" && done2 == false)
@@ -153,7 +176,8 @@ function HandleFinishedSelects()
 	
 	
 	function outputColSelect(JSONdata) {
-		document.getElementById("loadButton").disabled = true;
+		
+		document.getElementById("loadButton").disabled = true; //disable chart it button for now
 		
 		
 		var div1 = document.getElementById('selectToFill1');
@@ -161,7 +185,7 @@ function HandleFinishedSelects()
 		var div3 = document.getElementById('selectToFill3');
 
 		
-		for(var i = 0; i < JSONdata.length; i++) {
+		for(var i = 0; i < JSONdata.length; i++) {//for each returned object, create an option in each select
 			var option1 = document.createElement("option");
 			var option2 = document.createElement("option");
 			var option3 = document.createElement("option");
@@ -182,11 +206,9 @@ function HandleFinishedSelects()
 		
 		var select1val = document.getElementById("selectToFill1").value;
 		var select2val = document.getElementById("selectToFill2").value;
-		var select3val = document.getElementById("selectToFill3").value;
+		var select3val = document.getElementById("selectToFill3").value;	
 		
-		console.log(select1val);	
-		
-		
+		//Make ajax requests needed for column chart and store them as JSON
 		var C1M1 = $.ajax({
 			type: "GET",
 			url: 'lib/serviceVisits.php?custom=-01-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&and=AND%20country_code%3d%27'+select1val+'%27',
@@ -237,17 +259,17 @@ function HandleFinishedSelects()
 		C3M2 = C3M2.responseJSON;
 		var C3M3 = $.ajax({
 			type: "GET",
-			url: 'lib/serviceVisits.php?custom=-01-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&and=AND%20country_code%3d%27'+select3val+'%27',
+			url: 'lib/serviceVisits.php?custom=-09-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&and=AND%20country_code%3d%27'+select3val+'%27',
 			async: false
 		});
 		C3M3 = C3M3.responseJSON;
 
-		drawGroupedColumnChart(C1M1,C1M2,C1M3,C2M1,C2M2,C2M3,C3M1,C3M2,C3M3);
-		
+		//draw column chart using above values
+		drawGroupedColumnChart(C1M1,C1M2,C1M3,C2M1,C2M2,C2M3,C3M1,C3M2,C3M3);	
 	}
 
-
-	
+	//on window load, hide switch axis button for now
+	window.onload = function () { document.querySelector("#hide").style.visibility = 'hidden'; }
 	
 	
 	//Grabs data necessary for output of Column selects
