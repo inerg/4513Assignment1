@@ -89,7 +89,7 @@ session_start();
 							</select>
 							</div>
 							<div>
-							<button class="blue waves-effect waves-light btn" onclick="submitSelects()" id="loadButton">Chart It</button></div>
+							<button class="blue waves-effect waves-light btn" onclick="submitSelectsAndDrawChart()" id="loadButton">Chart It (May Take A While)</button></div>
 						<div id="card3"></div>
 	
 

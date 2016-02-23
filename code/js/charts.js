@@ -61,19 +61,35 @@ function outputGeoVisitsChart(JSONdata) {
 
 
 
-function drawGroupedColumnChart() {
-	    	    
-	var data = new google.visualization.DataTable();
-	data.addColumn('string', 'A');
-	data.addColumn('number', 'Jan');  
-	data.addColumn('number', 'May');
-	data.addColumn('number', 'Sept');
+function drawGroupedColumnChart(C1M1,C1M2,C1M3,C2M1,C2M2,C2M3,C3M1,C3M2,C3M3) {
 
-	data.addRows([
-		['China', 1000, 1100, 630],
-		['France', 390, 430, 1300],
-		['Spain', 190, 222, 360],
-	]);
+
+	var monthArr = ["Jan", "May", "Sept"];
+	
+
+	var switchHolder=1;
+
+	    
+	var data = new google.visualization.DataTable();
+	
+	if(switchHolder == 1) //Group Columns By Year
+	{
+	data.addColumn('string', 'A');
+	data.addColumn('number', monthArr[0]);  
+	data.addColumn('number', monthArr[1]);
+	data.addColumn('number', monthArr[2]);
+
+	console.log(typeof(C1M1[0].count));
+	
+	if(switchHolder == 1) //Group Columns By Year
+	{
+		data.addRows([
+			[C1M1[0].CountryName, parseInt(C1M1[0].count), parseInt(C1M2[0].count), parseInt(C1M3[0].count)],
+			[C2M1[0].CountryName, parseInt(C2M1[0].count), parseInt(C2M2[0].count), parseInt(C2M3[0].count)],
+			[C3M1[0].CountryName, parseInt(C3M1[0].count), parseInt(C3M2[0].count), parseInt(C3M3[0].count)],
+			
+		]);
+	  }
 	 
 
       var options = {
@@ -88,7 +104,7 @@ function drawGroupedColumnChart() {
     chart.draw(data, options);	  
 }
 
-
+}
 
 
 function handleMonthChangeRedraw(value, chartType) {
@@ -143,7 +159,7 @@ function HandleFinishedSelects()
 		var div1 = document.getElementById('selectToFill1');
 		var div2 = document.getElementById('selectToFill2');
 		var div3 = document.getElementById('selectToFill3');
-		console.log(JSONdata);
+
 		
 		for(var i = 0; i < JSONdata.length; i++) {
 			var option1 = document.createElement("option");
@@ -161,20 +177,75 @@ function HandleFinishedSelects()
 		}
 	}
 	
-	function submitSelects(){
+
+	function submitSelectsAndDrawChart(){
 		
-		var select1 = document.getElementById("selectToFill1");
-		var select2 = document.getElementById("selectToFill2");
-		var select3 = document.getElementById("selectToFill3");
+		var select1val = document.getElementById("selectToFill1").value;
+		var select2val = document.getElementById("selectToFill2").value;
+		var select3val = document.getElementById("selectToFill3").value;
 		
-		console.log(select1.value);	
+		console.log(select1val);	
 		
-		//Call for chart data () 
-	$.getJSON('lib/serviceVisits.php?custom=-01-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&groupBy=country_code&having=COUNT(country_code)>=10',
-        function(data) {
-			drawGroupedColumnChart(data);
-        });
+		
+		var C1M1 = $.ajax({
+			type: "GET",
+			url: 'lib/serviceVisits.php?custom=-01-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&and=AND%20country_code%3d%27'+select1val+'%27',
+			async: false
+		});
+		C1M1 = C1M1.responseJSON;
+		var C1M2 = $.ajax({
+			type: "GET",
+			url: 'lib/serviceVisits.php?custom=-05-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&and=AND%20country_code%3d%27'+select1val+'%27',
+			async: false
+		});
+		C1M2 = C1M2.responseJSON;
+		var C1M3 = $.ajax({
+			type: "GET",
+			url: 'lib/serviceVisits.php?custom=-09-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&and=AND%20country_code%3d%27'+select1val+'%27',
+			async: false
+		});
+		C1M3 = C1M3.responseJSON;
+		var C2M1 = $.ajax({
+			type: "GET",
+			url: 'lib/serviceVisits.php?custom=-01-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&and=AND%20country_code%3d%27'+select2val+'%27',
+			async: false
+		});
+		C2M1 = C2M1.responseJSON;
+		var C2M2 = $.ajax({
+			type: "GET",
+			url: 'lib/serviceVisits.php?custom=-05-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&and=AND%20country_code%3d%27'+select2val+'%27',
+			async: false
+		});
+		C2M2 = C2M2.responseJSON;
+		var C2M3 = $.ajax({
+			type: "GET",
+			url: 'lib/serviceVisits.php?custom=-09-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&and=AND%20country_code%3d%27'+select2val+'%27',
+			async: false
+		});
+		C2M3 = C2M3.responseJSON;
+		var C3M1 = $.ajax({
+			type: "GET",
+			url: 'lib/serviceVisits.php?custom=-01-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&and=AND%20country_code%3d%27'+select3val+'%27',
+			async: false
+		});
+		C3M1 = C3M1.responseJSON;
+		var C3M2 = $.ajax({
+			type: "GET",
+			url: 'lib/serviceVisits.php?custom=-05-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&and=AND%20country_code%3d%27'+select3val+'%27',
+			async: false
+		});
+		C3M2 = C3M2.responseJSON;
+		var C3M3 = $.ajax({
+			type: "GET",
+			url: 'lib/serviceVisits.php?custom=-01-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&and=AND%20country_code%3d%27'+select3val+'%27',
+			async: false
+		});
+		C3M3 = C3M3.responseJSON;
+
+		drawGroupedColumnChart(C1M1,C1M2,C1M3,C2M1,C2M2,C2M3,C3M1,C3M2,C3M3);
+		
 	}
+
 
 	
 	
@@ -198,7 +269,7 @@ function HandleFinishedSelects()
         function(data) {
 			outputGeoVisitsChart(data);
         });
-	//Call for column chart select content 
+
 	$.getJSON('lib/serviceVisits.php?custom=-01-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&groupBy=country_code&having=COUNT(country_code)>=10',
         function(data) {
 			outputGeoVisitsChart(data);
@@ -214,5 +285,4 @@ function HandleFinishedSelects()
 	google.load('visualization', '1', {packages: ['corechart', 'bar']});
 	google.setOnLoadCallback(drawGroupedColumnChart);	
 	
-	//colOutputSelect();
 	

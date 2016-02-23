@@ -148,7 +148,7 @@ class VisitTableGateway extends TableDataGateway
 		}
 		else { //groupBy used
 			if($having != NULL) {//and having used
-			echo "hit c";
+			//echo "hit c";
 				$sql = 'SELECT '.$selectVal. ' 
 						FROM visits 
 						WHERE '.$searchField.' LIKE "%'.$searchVariable.'%"'.$and.'
