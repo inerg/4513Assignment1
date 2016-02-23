@@ -13,7 +13,7 @@ session_start();
 <script type="text/javascript">
 
 
-		
+
 
 	//Draw the first chart (visits for month selected in drop-down list)
 function outputSelectedMonthVisitsChart(JSONdata) { 
@@ -48,20 +48,22 @@ function outputSelectedMonthVisitsChart(JSONdata) {
 
 
 // Function for setting up and drawing the geographic chart with site visits
-function outputGeoVisitsChart() {
+function outputGeoVisitsChart(JSONdata) {
   
-		
 	var data2 = google.visualization.arrayToDataTable(
 	[['Country', 'Popularity'],
 	['empty', 10]]); //Initial addition to the table because google charts doesn't work if you don't give
 					 //it a first set of values.
 		
-
-	
-	var rowData2 = [['Canada', 2050]];
-	var rowData3 = [['Russia', 4000]];
-			data2.addRows(rowData2);
-			data2.addRows(rowData3);
+	for (i = 0; i < JSONdata.length; i++) { 		
+		var cName = JSONdata[i].CountryName;
+		var cNum = parseInt(JSONdata[i].count);
+		
+		var row = [[cName, cNum]];
+		if(cNum >= 5){
+			data2.addRows(row);
+		}
+	}	
 			
 	
 	var options = {
@@ -106,13 +108,26 @@ function drawGroupedColumnChart() {
 
 
 
-function handleMonthChangeRedraw(value) {
-	$.getJSON('lib/serviceVisits.php?custom=-'+value+'-&select=COUNT(*) AS count&groupBy=visit_date',
+function handleMonthChangeRedraw(value, chartType) {
+	
+	if(chartType == "visitChart")
+	{
+		$.getJSON('lib/serviceVisits.php?custom=-'+value+'-&select=COUNT(*) AS count&groupBy=visit_date',
         function(data) {
 			outputSelectedMonthVisitsChart(data);
         });
+	}
+	if(chartType == "countryVisitChart") {
+		$.getJSON('lib/serviceVisits.php?custom=-'+value+'-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&groupBy=country_code&having=COUNT(country_code)>=10',
+        function(data) {
+			console.log(data);
+			outputGeoVisitsChart(data);
+        });
+	}	
 }
 	
+	
+
 	
 	
 	
@@ -123,6 +138,12 @@ function handleMonthChangeRedraw(value) {
 			google.setOnLoadCallback(outputSelectedMonthVisitsChart(data));
         });
 		
+	////Call the outputGeoVisitsChart chart, using January as its initial value	
+	$.getJSON('lib/serviceVisits.php?custom=-01-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&groupBy=country_code&having=COUNT(country_code)>=10',
+        function(data) {
+			console.log(data);
+			outputGeoVisitsChart(data);
+        });
 	
 
 	//Call the outputGeoVisitsChart chart
@@ -135,7 +156,7 @@ function handleMonthChangeRedraw(value) {
 	google.load('visualization', '1', {packages: ['corechart', 'bar']});
 	google.setOnLoadCallback(drawGroupedColumnChart);	
 	
-	
+
 </script>
 
 
@@ -149,7 +170,7 @@ function handleMonthChangeRedraw(value) {
 				<div class="card-panel orange lighten-2 cardOne z-depth-2">
 				  <div class="white blue-grey-text text-darken-4 card-inner-content">
 					<div>
-						<select  class="btn pink lighten-2 dropdown-button-widths" name="continent" onchange="handleMonthChangeRedraw(this.value)">
+						<select  class="btn orange lighten-2 dropdown-button-widths" name="continent" onchange="handleMonthChangeRedraw(this.value, 'visitChart')">
 							<option selected disabled>Select a Month</option>
 							<option value="01">January</option>
 							<option value="02">February</option>
@@ -175,9 +196,23 @@ function handleMonthChangeRedraw(value) {
 			  <div class="col s12">
 				<div class="card-panel teal lighten-2 cardTwo z-depth-2">
 				  <div class=" white blue-grey-text text-darken-4 card-inner-content">
-				  <div id="parent1">
-				  </div>
-				  <div></div>
+				  <div>
+				  <select  class="btn teal lighten-2 dropdown-button-widths" name="continent" onchange="handleMonthChangeRedraw(this.value, 'countryVisitChart')">
+							<option selected disabled>Select a Month</option>
+							<option value="01">January</option>
+							<option value="02">February</option>
+							<option value="03">March</option>
+							<option value="04">April</option>
+							<option value="05">May</option>
+							<option value="06">June</option>
+							<option value="07">July</option>
+							<option value="08">August</option>
+							<option value="09">September</option>
+							<option value="10">October</option>
+							<option value="11">November</option>
+							<option value="12">December</option>
+						</select></div>
+				  <div id="parent1"></div>
 				  </div>
 				</div><!--/cardTwo: Geo Chart-->
 			  </div>

@@ -148,7 +148,7 @@ class VisitTableGateway extends TableDataGateway
 		}
 		else { //groupBy used
 			if($having != NULL) {//and having used
-			//echo "hit c";
+			echo "hit c";
 				$sql = 'SELECT '.$selectVal. ' 
 						FROM visits 
 						WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"
