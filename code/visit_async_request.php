@@ -18,7 +18,7 @@ if(isset($_REQUEST['browser']) && !empty($_REQUEST['browser'])){
     $query.'browser_id = \''.$_REQUEST['browser'].'\' ';
 }
 //    $passedValue = $_REQUEST['brand'];
-if($query == "WHERE ")
+if(strcmp($query,"WHERE ") == 0)
 {
     $query = "";
 }
