@@ -61,7 +61,7 @@ class DeviceBrandTableGateway extends TableDataGateway
     //Outputs a option list of brands.
     public function printBrandDropdown($selectedBrand = null)
     {
-        echo '<div class="input-field col s4">';
+        echo '<div class="input-field col s3">';
         echo '<select  class="btn teal lighten-2 dropdown-button-widths" name="brand" onchange="formChange(\'brandSelect\')">';
         if($selectedBrand == null) {
             echo '<option class="placeholder white-text teal darken-1" selected disabled>Select Brand</option>';

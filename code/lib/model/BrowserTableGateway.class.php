@@ -47,6 +47,17 @@ class BrowserTableGateway extends TableDataGateway
 		return $result;
 	}
 
+    public function printBrowserDropdown()
+    {
+        $deviceTypeList = $this->getBrowsers();
+        echo '<select class="btn teal lighten-2 brand-button change dropdown-button-widths">';
+        echo '<option class="placeholder white-text blue darken-1" selected disabled value="">Device Type</option>';
+        foreach ($deviceTypeList as $currentType) {
+            echo '<option value="' . $currentType['id'] . '">' . $currentType['name'] . '</option>';
+        }
+        echo '</select>';
+
+    }
 }
 
 ?>

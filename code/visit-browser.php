@@ -19,12 +19,18 @@
             <div class="card-panel blue lighten-2 z-depth-2">
                 <div class="white blue-grey-text text-darken-4 card-inner-content">
                     <h2 class="card-header center">Filters</h2>
-                    <input type="text" id="country">
+                    <div class="row">
+                        <input type="text" id="country">
+                    </div>
                     <?php
-                    $deviceBrandGate->printBrandDropdown();
-                    $deviceTypes->printDeviceTypeDropdown();
+                    echo '<div class="row">';
+                        $deviceBrandGate->printBrandDropdown();
+                    echo '</div>';
+                    echo '<div class="row">';
+                        $deviceTypes->printDeviceTypeDropdown();
+                    echo '</div>';
                     ?>
-                    <input type="button" id="submit" text="submit"></button>
+                    <a class="waves-effect waves-light btn">Submit</a>
                 </div>
             </div>
         </div>
