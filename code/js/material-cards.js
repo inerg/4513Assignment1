@@ -110,7 +110,7 @@ function displayContinentVisitData(visitsArray) {
     }
 
     table.appendChild(tableBody);
-    var select = document.querySelector("#continents");
+    var select = document.querySelector("#continent");
 
     select.parentNode.appendChild(table);
 
