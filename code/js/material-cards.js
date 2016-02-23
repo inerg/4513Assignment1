@@ -114,6 +114,7 @@ function displayContinentVisitData(visitsArray) {
 
     table.appendChild(tableBody);
 
+    var select = document.querySelector("#continent");
     select.parentNode.appendChild(table);
 
     $('#' + select.parentNode.id + "> .progress").hide();
