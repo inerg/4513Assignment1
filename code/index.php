@@ -22,7 +22,7 @@
                       <div class="row">
                           <div class="col s11">
                               <form action="index.php" method="get" id="brandSelect" target="_self">
-                                  <div class="input-field col s4">
+
                                       <select  class="btn teal lighten-2 dropdown-button-widths" name="brand" onchange="formChange('brandSelect')">
                                       <?php
                                         $deviceBrandGate->printBrandDropdown(trim($_GET['brand']));

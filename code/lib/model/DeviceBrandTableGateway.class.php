@@ -61,6 +61,7 @@ class DeviceBrandTableGateway extends TableDataGateway
     //Outputs a option list of brands.
     public function printBrandDropdown($selectedBrand = null)
     {
+        echo '<div class="input-field col s4">';
         if($selectedBrand == null) {
             echo '<option class="placeholder white-text teal darken-1" selected disabled>Select Brand</option>';
         } else {
@@ -75,6 +76,7 @@ class DeviceBrandTableGateway extends TableDataGateway
                 echo '<option value="' . $brand['name'] . '">' . $brand['name'] . '</option>';
             }
         }
+        echo '</div>';
 
     }
     //Prints the vists for the brand selected.
