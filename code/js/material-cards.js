@@ -1,28 +1,28 @@
 window.onload=function(){
 
 
- var items = document.querySelectorAll('.change');
+ var items = document.getElementsByClassName('.change');
     for(var i = 0; i < items.length; i++)
     {
-        item[1].addEventListener("change", listen())
+        items[i].addEventListener("change", listen)
     }
 
 function listen() {
 
-    var id = this.parentNode.getAttribute("id");
-    var div
+    var id = e.target.parentNode.getAttribute("id");
+    var div;
     var toRemove;
     var data;
     if(id == "brands"){
         div = document.querySelector('#brands');
         toRemove = document.querySelector("p#p");
-        data = {brand: this.value};
+        data = {brand: e.target.value};
     }
     else{
         if(id == "continent"){
             div = document.querySelector('#continents');
             toRemove = document.querySelector("#countries");
-            data = {continent: this.value};
+            data = {continent: e.target.value};
         }
     }
     if(toRemove != null) {
@@ -75,8 +75,8 @@ function displayContinentVisitData(visitsArray) {
     table.className = "striped highlight responsive-table table-hover-continents";
     var tableHead = document.createElement("thead");
     var row = document.createElement("tr");
-    row.appendChild(document.createElement("th").innerHTML("Countries").setAttribute("data-field", "id"));
-    row.appendChild(document.createElement("th").innerHTML("Visitor Count").setAttribute("data-field", "name"));
+    row.appendChild(document.createElement("th").setAttribute("data-field", "id").innerHTML("Countries"));
+    row.appendChild(document.createElement("th").setAttribute("data-field", "name").innerHTML("Visitor Count"));
 
     tableHead.appendChild(row)
     table.appendChild(tableHead);
