@@ -37,6 +37,9 @@
                     echo '<div class="row">';
                         $referrerGate->printReferrerDropdown();
                     echo '</div>';
+                    echo '<div class="row">';
+                        $osGate->printOSDropdown();
+                    echo '</div>';
                     ?>
                     <a class="waves-effect waves-light btn">Submit</a>
                 </div>
