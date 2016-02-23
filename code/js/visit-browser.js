@@ -124,6 +124,7 @@ function displayVisitData(visitsArray) {
         var modal = document.createElement("a");
         modal.setAttribute("href","#modal" + i);
         modal.className = "btn modal-trigger waves-light waves-effect";
+        modal.innerHTML = "Info";
         column.appendChild(modal);
         buildModal(visitsArray[i], i);
         //column.innerHTML = "put link here";

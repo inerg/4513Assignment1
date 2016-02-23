@@ -44,7 +44,7 @@ class DeviceTypeTableGateway extends TableDataGateway
     {
         $deviceTypeList = $this->getDeviceTypes();
         echo '<div class="input-field col s3">';
-        echo '<select class="btn teal lighten-2 brand-button change dropdown-button-widths">';
+        echo '<select class="btn teal lighten-2 brand-button change dropdown-button-widths" name="dt">';
         echo '<option class="placeholder white-text blue darken-1" selected disabled value="">Device Type</option>';
         foreach ($deviceTypeList as $currentType) {
             echo '<option value="' . $currentType['id'] . '">' . $currentType['name'] . '</option>';

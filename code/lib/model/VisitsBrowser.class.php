@@ -5,7 +5,7 @@
  */
 class VisitsBrowser extends DomainObject implements JsonSerializable {
    static function getFieldNames() {
-		return array('visit_date','visit_time','ip_address','CountryName','BrowserName','ReferrerName','OSName','DTName');
+		return array('visit_date','visit_time','ip_address','CountryName','BrowserName','ReferrerName','OSName','DTName','BrandName');
    }
 	public function __construct(array $data, $generateExc) {
 		parent::__construct($data, $generateExc);
@@ -21,7 +21,8 @@ class VisitsBrowser extends DomainObject implements JsonSerializable {
 					'BrowserName' => $this->BrowserName,
 					'ReferrerName' => $this->ReferrerName,
 					'OSName' => $this->OSName,
-					'DTName' => $this->DTName
+					'DTName' => $this->DTName,
+					'BrandName' => $this->BrandName
 					]
 				];
 	}

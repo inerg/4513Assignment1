@@ -35,12 +35,14 @@ class VisitsBrowserTableGateway extends TableDataGateway
                         ,r.name AS ReferrerName
                         ,os.name AS OSName
                         ,dt.name AS DTName
+                        ,db.name AS BrandName
                         FROM visits v
                         INNER JOIN countries c ON c.ISO = v.country_code
                         INNER JOIN browsers b ON b.ID = v.browser_id
                         INNER JOIN referrers r ON r.id = v.referrer_id
                         INNER JOIN operating_systems os ON os.ID = v.os_id
                         INNER JOIN device_types dt ON dt.ID = v.device_type_id
+                        INNER JOIN device_brands db ON v.device_brand_id
                          '. $searchParameters. '
                         ORDER BY visit_date, visit_time  LIMIT 100';
 
