@@ -120,7 +120,13 @@ function displayVisitData(visitsArray) {
         row.appendChild(column);
 
         column = document.createElement("td");
-        column.innerHTML = "put link here";
+
+        var modal = document.createElement("a");
+        modal.setAttribute("href","#modal" + i);
+        modal.className = "btn modal-trigger waves-light waves-effect";
+        column.appendChild(modal);
+        buildModal(visitsArray[i], i);
+        //column.innerHTML = "put link here";
         row.appendChild(column);
 
         tableBody.appendChild(row);
@@ -134,6 +140,30 @@ function displayVisitData(visitsArray) {
 
    // $('#continent > .progress').hide();
 
+}
+
+function buildModal(info, id){
+     var div = document.createElement("div");
+    div.id = "modal"+id;
+    div.className = "modal";
+    var tempDiv = document.createElement("div");
+    tempDiv.className = "modal-content";
+    var modalHeader = document.createElement("h4");
+    modalHeader.innerHTML = info.ip_address;
+    tempDiv.appendChild(modalHeader);
+    //fill it with things here
+
+    div.appendChild(tempDiv);
+
+    tempDiv = document.createElement("div");
+    tempDiv.className = "modal-footer";
+
+    var modalFooter = document.createElement("a");
+    modalFooter.className = "modal-action modal-close waves-effect waves-green btn-flat"
+    modalFooter.setAttribute("href","#!");
+    tempDiv.appendChild(modalFooter);
+    div.appendChild(tempDiv);
+    document.querySelector("body").appendChild(div);
 }
 function loadingBar(id){
     var divProgress = document.createElement("div");
