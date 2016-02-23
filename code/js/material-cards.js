@@ -1,6 +1,9 @@
 window.onload=function(){
 
-document.querySelector('.change').addEventListener("change", function(e) {
+
+document.querySelectorAll('.change').addEventListener("change", listen());
+
+function listen() {
 
     var id = this.parentNode.getAttribute("id");
     var div
@@ -23,7 +26,7 @@ document.querySelector('.change').addEventListener("change", function(e) {
     }
 	
 	asyncAJAXRequest(data, id);
-});
+}
 
 function asyncAJAXRequest(data, id) {
 	$.ajax({
