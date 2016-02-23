@@ -22,6 +22,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <input type="text" id="country">
+                            <label for="country">Country</label>
                         </div>
                     </div>
                     <?php

@@ -23,7 +23,7 @@ class OperatingSystemTableGateway extends TableDataGateway
    }
   
    protected function getPrimaryKeyName() {
-      return "id";
+      return "ID";
    }
 	
 	public function getOperatingSystems() {
@@ -44,7 +44,7 @@ class OperatingSystemTableGateway extends TableDataGateway
         echo '<select class="btn teal lighten-2 brand-button change dropdown-button-widths">';
         echo '<option class="placeholder white-text blue darken-1" selected disabled value="">Operating System</option>';
         foreach ($osList as $currentType) {
-            echo '<option value="' . $currentType['id'] . '">' . $currentType['name'] . '</option>';
+            echo '<option value="' . $currentType['ID'] . '">' . $currentType['name'] . '</option>';
         }
         echo '</select>';
         echo '</div>';
