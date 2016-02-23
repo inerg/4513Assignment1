@@ -27,6 +27,7 @@ class VisitsBrowserTableGateway extends TableDataGateway
    }
 	
 	public function getVisitInfo($searchParameters) {
+        error_log(@$searchParameters);
 		$sql = 'SELECT	visit_date
                         ,visit_time
                         ,ip_address
