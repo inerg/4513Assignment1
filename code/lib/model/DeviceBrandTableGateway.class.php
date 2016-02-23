@@ -64,9 +64,9 @@ class DeviceBrandTableGateway extends TableDataGateway
         echo '<div class="input-field col s3">';
         echo '<select  class="btn teal lighten-2 dropdown-button-widths" id="brand">';
         if($selectedBrand == null) {
-            echo '<option class="placeholder white-text teal darken-1" selected disabled>Select Brand</option>';
+            echo '<option class="placeholder white-text teal darken-1" selected disabled value="false">Select Brand</option>';
         } else {
-            echo '<option class="placeholder white-text teal darken-1" disabled value="">Select Brand</option>';
+            echo '<option class="placeholder white-text teal darken-1" disabled value="false">Select Brand</option>';
         }
         $brands = $this->getDeviceBrands();
         foreach($brands as $brand)

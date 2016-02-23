@@ -42,7 +42,7 @@ class ReferrerTableGateway extends TableDataGateway
         $referrerList = $this->getReferrer();
         echo '<div class="input-field col s3">';
         echo '<select class="btn teal lighten-2 brand-button change dropdown-button-widths" id="referrer">';
-        echo '<option class="placeholder white-text blue darken-1" selected disabled value="">Referrer</option>';
+        echo '<option class="placeholder white-text blue darken-1" selected disabled value="false">Referrer</option>';
         foreach ($referrerList as $currentType) {
             echo '<option value="' . $currentType['id'] . '">' . $currentType['name'] . '</option>';
         }

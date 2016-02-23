@@ -1,6 +1,6 @@
 window.onload=function() {
 
-asyncAJAXRequest();
+asyncAJAXRequest("");
     document.querySelector('#submit').addEventListener("click", updateTable);
 // var items = document.getElementsByClassName('change');
 //    for(var i = 0; i < items.length; i++)
@@ -37,25 +37,25 @@ asyncAJAXRequest();
 //
 function updateTable(){
 
-    //if(id == "brands")
-    {
-        var div = document.querySelector('#brand');
-        console.log(div.options[div.selectedIndex].value);
-    }
-    //if(id == "continent")
-    {
-        var div = document.querySelector('#os');
-        console.log(div.options[div.selectedIndex].value);
-        //loadingBar('#continent');
-        //div = document.querySelector('#countries').parentNode;
-        //toRemove = document.querySelector("#countries");
-        //data = {continent: e.target.value};
-        //data = {brand: e.target.value};
-    }
+        var brand = document.querySelector('#brand');
+        brand = brand.options[brand.selectedIndex].value;
+        var os = document.querySelector('#os');
+        os = os.options[os.selectedIndex].value;
+        var dt = document.querySelector('#dt');
+        dt = dt.options[dt.selectedIndex].value;
+        var referrer = document.querySelector('#referrer');
+        referrer = referrer.options[referrer.selectedIndex].value;
+        var browser = document.querySelector('#browser');
+        browser = browser.options[browser.selectedIndex].value
+
+        data = {brand: brand, os: os, dt: dt, referrer: referrer, browser: browser};
+        //console.log(div.options[div.selectedIndex].value);
+        //console.log(div.options[div.selectedIndex].value);
+
     clearModals();
     clearTable();
     loadingBar("#VisitInfo");
-    asyncAJAXRequest();
+    asyncAJAXRequest(data);
 }
 
     function clearModals(){
@@ -71,12 +71,12 @@ function updateTable(){
         var parent = document.querySelector("#VisitInfo").parentNode;
         parent.removeChild(document.querySelector("#countries"));
     }
-function asyncAJAXRequest() {
+function asyncAJAXRequest(data) {
 	$.ajax({
 		type: "post",
 		url: "visit_async_request.php",
 		async: true,
-		data: "",
+		data: data,
 		success: function(receivedArray) {
 		var array1 = JSON.parse(receivedArray); //this line and
             displayVisitData(array1);

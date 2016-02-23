@@ -52,7 +52,7 @@ class BrowserTableGateway extends TableDataGateway
         $browserList = $this->getBrowsers();
         echo '<div class="input-field col s3">';
         echo '<select class="btn teal lighten-2 brand-button change dropdown-button-widths" id="browser">';
-        echo '<option class="placeholder white-text blue darken-1" selected disabled value="">Browser</option>';
+        echo '<option class="placeholder white-text blue darken-1" selected disabled value="false">Browser</option>';
         foreach ($browserList as $currentType) {
             echo '<option value="' . $currentType['id'] . '">' . $currentType['name'] . '</option>';
         }
