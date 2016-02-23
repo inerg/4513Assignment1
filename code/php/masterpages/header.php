@@ -26,6 +26,7 @@
 	<script type="text/javascript" src="js/materialize-modified.js"></script>
 	<script type="text/javascript" src="js/material-cards.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
+
 </head>
 <body>
 	<!-- Navigation -->
