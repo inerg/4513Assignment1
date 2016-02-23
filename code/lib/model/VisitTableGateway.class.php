@@ -207,6 +207,7 @@ class VisitTableGateway extends TableDataGateway
 		return $result;
 	}
 
+
 }
 
 ?>

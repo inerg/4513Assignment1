@@ -2,7 +2,7 @@
 /*
   Table Data Gateway for the Browser table.
  */
-class ReferrerTableGateway extends TableDataGateway
+class OperatingSystemTableGateway extends TableDataGateway
 {    
    public function __construct($dbAdapter) 
    {
@@ -11,11 +11,11 @@ class ReferrerTableGateway extends TableDataGateway
   
    protected function getDomainObjectClassName()  
    {
-      return "Referrer";
+      return "OperatingSystem";
    } 
    protected function getTableName()
    {
-      return "referrers";
+      return "operating_systems";
    }
    protected function getOrderFields() 
    {
@@ -23,12 +23,12 @@ class ReferrerTableGateway extends TableDataGateway
    }
   
    protected function getPrimaryKeyName() {
-      return "id";
+      return "ID";
    }
 	
-	public function getReferrer() {
+	public function getOperatingSystems() {
 		$sql = 'SELECT *
-				FROM referrers
+				FROM operating_systems
 				LIMIT 100';
 		
 		//convert records to array
@@ -37,14 +37,14 @@ class ReferrerTableGateway extends TableDataGateway
 		return $result;
 	}
 	
-    public function printReferrerDropdown()
+    public function printOSDropdown()
     {
-        $referrerList = $this->getReferrer();
+        $osList = $this->getOperatingSystems();
         echo '<div class="input-field col s3">';
         echo '<select class="btn teal lighten-2 brand-button change dropdown-button-widths">';
-        echo '<option class="placeholder white-text blue darken-1" selected disabled value="">Referrer</option>';
-        foreach ($referrerList as $currentType) {
-            echo '<option value="' . $currentType['id'] . '">' . $currentType['name'] . '</option>';
+        echo '<option class="placeholder white-text blue darken-1" selected disabled value="">Operating System</option>';
+        foreach ($osList as $currentType) {
+            echo '<option value="' . $currentType['ID'] . '">' . $currentType['name'] . '</option>';
         }
         echo '</select>';
         echo '</div>';

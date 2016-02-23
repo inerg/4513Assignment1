@@ -7,6 +7,7 @@
 	$deviceTypes = new DeviceTypeTableGateway($dbAdapter);
 	$actualBrowserGate = new BrowserTableGateway($dbAdapter);
 	$referrerGate = new ReferrerTableGateway($dbAdapter);
+	$osGate = new OperatingSystemTableGateway($dbAdapter);
 
 	$allDeviceBrands = $deviceBrandGate->getDeviceBrands();
 	
