@@ -46,8 +46,9 @@ function updateTable(){
         var parent = document.querySelector("body");
         var modals = document.getElementsByClassName("modal");
         for(var i = 0; i < modals.length; i++){
-            console.log("clearing: " + modals[i].id);
-            parent.removeChild(modals[i]);
+            var temp = modals[i];
+            console.log("clearing: " + temp.id);
+            parent.removeChild(temp);
         }
     }
     function clearTable(){
