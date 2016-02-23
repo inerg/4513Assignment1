@@ -7,7 +7,7 @@
 				<li class="side-nav-underline orange lighten-2"><a href="index.php" target="_parent"><i class="material-icons home-icon">home</i></a></li>
 				<li class="side-nav-underline"><a href="about.php" target="_parent">About Us</a></li>
 				<li class="side-nav-underline"><a href="index-ajax.php" target="_parent">Main Page - AJAX</a></li>
-				<li class="side-nav-underline"><a href="#!" target="_parent">Visit Browser</a></li>
+				<li class="side-nav-underline"><a href="visit-browser.php" target="_parent">Visit Browser</a></li>
 				<li class="side-nav-underline"><a href="charts.php" target="_parent">Charts</a></li>
 			</ul>
 			<a href="#" data-activates="slide-out" class="button-collapse"><i class="medium mdi-navigation-menu"></i></a>
