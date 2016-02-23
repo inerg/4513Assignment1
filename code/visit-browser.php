@@ -1,12 +1,17 @@
 <?php include 'php/masterpages/header.php'; ?>
+<?php include 'lib/gateway_setup.php'; ?>
 
 <!-- Container: Main -->
-<div class="container">
+<div class="container" xmlns="http://www.w3.org/1999/html">
     <div class="row">
         <div class="col s12">
             <div class="card-panel yellow lighten-2 z-depth-1">
                 <div class="white blue-grey-text text-darken-4 card-inner-content">
                     <br/><h1 class="card-header center">Visit Browser</h1><br/>
+                    <?php
+                        $deviceBrandGate->printBrandDropdown();
+                    ?>
+                    <input type="button" id="submit">Submit</button>
                 </div>
             </div>
         </div>
