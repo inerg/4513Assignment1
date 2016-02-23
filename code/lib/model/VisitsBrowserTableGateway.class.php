@@ -44,7 +44,7 @@ class VisitsBrowserTableGateway extends TableDataGateway
                         INNER JOIN device_types dt ON dt.ID = v.device_type_id
                         INNER JOIN device_brands db ON v.device_brand_id
                          '. $searchParameters. '
-                        ORDER BY visit_date, visit_time  LIMIT 100';
+                          ORDER BY visit_date, visit_time  LIMIT 100';
 
 		//convert records to array
 		$result = $this->dbAdapter->fetchAsArray($sql, null);
