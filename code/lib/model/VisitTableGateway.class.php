@@ -126,7 +126,7 @@ class VisitTableGateway extends TableDataGateway
 	}
 	
 	
-	public function getCustomSearch($selectVal, $searchVariable, $groupBy, $having, $join) {
+	public function getCustomSearch($selectVal, $searchField, $and, $searchVariable, $groupBy, $having, $join) {
 		
 	if($join == NULL) {	//no joins used
 		if($groupBy == NULL) //groupBy not used
@@ -135,13 +135,13 @@ class VisitTableGateway extends TableDataGateway
 			{//echo "hit a";
 				$sql = 'SELECT '.$selectVal. '
 					FROM visits 
-					WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"';
+					WHERE '.$searchField.' LIKE "%'.$searchVariable.'%"'.$and;
 			}
 			else { //and using having
 			//echo "hit b";
 				$sql = 'SELECT '.$selectVal. '
 					FROM visits 
-					WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"
+					WHERE '.$searchField.' LIKE "%'.$searchVariable.'%"'.$and.'
 					HAVING '.$having;
 				
 			}
@@ -151,7 +151,7 @@ class VisitTableGateway extends TableDataGateway
 			echo "hit c";
 				$sql = 'SELECT '.$selectVal. ' 
 						FROM visits 
-						WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"
+						WHERE '.$searchField.' LIKE "%'.$searchVariable.'%"'.$and.'
 						GROUP BY '.$groupBy.' 
 						HAVING '.$having;
 			}
@@ -159,7 +159,7 @@ class VisitTableGateway extends TableDataGateway
 			//echo "hit d";
 				$sql = 'SELECT '.$selectVal. ' 
 						FROM visits 
-						WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"
+						WHERE '.$searchField.' LIKE "%'.$searchVariable.'%"'.$and.'
 						GROUP BY '.$groupBy;
 			}
 		}
@@ -171,13 +171,13 @@ class VisitTableGateway extends TableDataGateway
 			{//echo "hit e";
 				$sql = 'SELECT '.$selectVal. '
 					FROM visits INNER JOIN '.$join.' 
-					WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"';
+					WHERE '.$searchField.' LIKE "%'.$searchVariable.'%"'.$and;
 			}
 			else {//and using having
 			//echo "hit f";
 				$sql = 'SELECT '.$selectVal. '
 					FROM visits  INNER JOIN '.$join.'
-					WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"
+					WHERE '.$searchField.' LIKE "%'.$searchVariable.'%"
 					HAVING '.$having;
 				
 			}
@@ -187,7 +187,7 @@ class VisitTableGateway extends TableDataGateway
 			//echo "hit g";
 				$sql = 'SELECT '.$selectVal. ' 
 						FROM visits INNER JOIN '.$join.'
-						WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"
+						WHERE '.$searchField.' LIKE "%'.$searchVariable.'%"'.$and.'
 						GROUP BY '.$groupBy.'
 						HAVING '.$having;
 			}
@@ -195,7 +195,7 @@ class VisitTableGateway extends TableDataGateway
 			//echo "hit h";
 				$sql = 'SELECT '.$selectVal. ' 
 						FROM visits INNER JOIN '.$join.'
-						WHERE CONCAT_WS(id, ip_address, country_code, visit_date, device_type_id, device_brand_id, browser_id, referrer_id, os_id) LIKE "%'.$searchVariable.'%"
+						WHERE '.$searchField.' LIKE "%'.$searchVariable.'%"'.$and.'
 						GROUP BY '.$groupBy;
 			}
 		}
