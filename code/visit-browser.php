@@ -15,12 +15,14 @@
         <div class="col s3">
             <div class="card-panel blue lighten-2 z-depth-2">
                 <div class="white blue-grey-text text-darken-4 card-inner-content">
+                    <h2 class="card-header center">Filters</h2>
                 </div>
             </div>
         </div>
         <div class="col s9">
             <div class="card-panel green lighten-2 z-depth-2">
                 <div class="white blue-grey-text text-darken-4 card-inner-content">
+                    <h2 class="card-header center">Data</h2>
                 </div>
             </div>
         </div>
