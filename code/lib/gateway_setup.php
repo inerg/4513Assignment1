@@ -5,6 +5,7 @@
 	$deviceBrandGate = new DeviceBrandTableGateway($dbAdapter);
 	$continentGate = new ContinentTableGateway($dbAdapter);
 	$deviceTypes = new DeviceTypeTableGateway($dbAdapter);
+	$actualBrowserGate = new BrowserTableGateWay($dbAdapter);
 
 	$allDeviceBrands = $deviceBrandGate->getDeviceBrands();
 	

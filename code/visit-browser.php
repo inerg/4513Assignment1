@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col s3">
+        <div class="col s4">
             <div class="card-panel blue lighten-2 z-depth-2">
                 <div class="white blue-grey-text text-darken-4 card-inner-content">
                     <h2 class="card-header center">Filters</h2>
@@ -32,14 +32,14 @@
                         $deviceTypes->printDeviceTypeDropdown();
                     echo '</div>';
                     echo '<div class="row">';
-                        $browserGate->printBrowserDropdown();
+                        $actualBrowserGate->printBrowserDropdown();
                     echo '</div>';
                     ?>
                     <a class="waves-effect waves-light btn">Submit</a>
                 </div>
             </div>
         </div>
-        <div class="col s9">
+        <div class="col s8">
             <div class="card-panel green lighten-2 z-depth-2">
                 <div class="white blue-grey-text text-darken-4 card-inner-content">
                     <h2 class="card-header center">Data</h2>
