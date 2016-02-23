@@ -44,7 +44,7 @@ function updateTable(){
 
     function clearModals(){
         var parent = document.querySelector("body");
-        var modals = document.getElementsByClassName("modal");
+        var modals = document.querySelectorAll(".modal");
         for(var i = 0; i < modals.length; i++){
             var temp = modals[i];
             console.log("clearing: " + temp.id);
