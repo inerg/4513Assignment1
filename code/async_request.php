@@ -21,9 +21,7 @@ else
         $continentGate = new ContinentTableGateway($dbAdapter);
         $result = $continentGate->getVisitsByContinentCode($passedValue);
 
-        $stringToConvert = array($result[0]['CountryName'], $result[0]['VisitCount']);
-
-        echo json_encode($stringToConvert);
+        echo json_encode($result);
     }
 }
 	

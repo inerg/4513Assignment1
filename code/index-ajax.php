@@ -32,11 +32,6 @@
 					<div class="card-panel pink lighten-2 CardThree z-depth-2">
 						<div class="white blue-grey-text text-darken-4 card-inner-content" id="continents">
 							<h1 class="card-header">Visitors by Continents</h1><br/>
-							<!-- REMOVE: Make Dynamic Dropdown Trigger -->
-<!--							<a class="dropdown-button btn pink lighten-2" href="#" data-activates="dropdown-continents">Pick a Continent!</a>-->
-
-							<!-- REMOVE: Make Dynamic Dropdown Structure -->
-<!--							<ul id="dropdown-continents" class="dropdown-content">-->
                                 <div class="input-field col s7" id="continent">
                                     <select  class="btn pink lighten-2 dropdown-button-widths change" name="continent">
 
@@ -46,25 +41,14 @@
 
                                     </select>
                                 </div>
-<!--							</ul>-->
 
-							<!-- REMOVE: Make this dynamic in JS -->
-							<table class="striped highlight responsive-table table-hover-continents" id="countries">
-<!--								<thead>-->
-<!--								<tr>-->
-<!--									<th data-field="id">Countries</th>-->
-<!--									<th data-field="name">Visitor Count</th>-->
-<!--								</tr>-->
-<!--								</thead>-->
-<!--								<tbody>-->
+
                                 <?php
 								if(ISSET($_GET['continent']))
 								{
                                     $continentGate->printVisitList($_GET['continent']);
                                 }
 								?>
-								</tbody>
-							</table>
 						</div>
 					</div><!--/CardThree: Continents-->
 				</div><!--/Row 2: Column 1: Column 1.A-->

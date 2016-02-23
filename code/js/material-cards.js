@@ -20,7 +20,7 @@ function listen(e) {
     }
     else{
         if(id == "continent"){
-            div = document.querySelector('#continents');
+            div = document.querySelector('#countries').parentNode;
             toRemove = document.querySelector("#countries");
             data = {continent: e.target.value};
         }
