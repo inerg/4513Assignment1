@@ -36,6 +36,22 @@ asyncAJAXRequest();
 //}
 //
 function updateTable(){
+
+    //if(id == "brands")
+    {
+        var div = document.querySelector('#brands');
+        console.log(div.options[div.selectedIndex].value);
+    }
+    //if(id == "continent")
+    {
+        var div = document.querySelector('#brand');
+        console.log(div.options[div.selectedIndex].value);
+        //loadingBar('#continent');
+        //div = document.querySelector('#countries').parentNode;
+        //toRemove = document.querySelector("#countries");
+        //data = {continent: e.target.value};
+        //data = {brand: e.target.value};
+    }
     clearModals();
     clearTable();
     loadingBar("#VisitInfo");
