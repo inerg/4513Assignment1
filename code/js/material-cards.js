@@ -69,7 +69,7 @@ function displayBrandVisitData(visitsArray) {
 	var select = document.querySelector("Select");
 	
 	select.parentNode.insertBefore(para, select.nextSibling);
-    document.querySelector(select.parentNode.id + ".progress").hide();
+    $('#' + select.parentNode.id + "> .progress").hide();
 }
 
 function displayContinentVisitData(visitsArray) {
@@ -116,7 +116,7 @@ function displayContinentVisitData(visitsArray) {
 
     select.parentNode.appendChild(table);
 
-    document.querySelector(select.parentNode.id + ".progress").hide();
+    $('#' + select.parentNode.id + "> .progress").hide();
 
 };}
 function loadingBar(id){
