@@ -89,7 +89,7 @@ function displayVisitData(visitsArray) {
     row.appendChild(th);
 
     th = document.createElement("th");
-    th.innerHTML = "";
+    th.innerHTML = "More Info";
     row.appendChild(th);
 
     tableHead.appendChild(row);
@@ -106,7 +106,8 @@ function displayVisitData(visitsArray) {
         row.appendChild(column);
 
         column = document.createElement("td");
-        column.innerHTML = visitsArray[i].visit_time;
+        var date = Date(visitsArray[i].visit_time);
+        column.innerHTML = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
         row.appendChild(column);
 
         column = document.createElement("td");
