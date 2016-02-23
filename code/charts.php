@@ -94,8 +94,8 @@ session_start();
 							</select>
 							</div>
 							<div>
-							<button class="blue waves-effect waves-light btn" onclick="submitSelectsAndDrawChart()" id="loadButton">Chart It</button>
-							<button class="blue waves-effect waves-light btn" onclick="submitSelectsAndDrawChart()" id="hide">Switch Axis</button></div>
+							<button class="blue waves-effect waves-light btn" onclick="submitSelectsAndDrawChart(false)" id="loadButton">Chart It</button>
+							<button class="blue waves-effect waves-light btn" onclick="submitSelectsAndDrawChart(true)" id="hide">Switch Axis</button></div>
 						<div id="card3"></div>
 	
 

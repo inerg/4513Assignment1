@@ -64,11 +64,14 @@ function outputGeoVisitsChart(JSONdata) {
 
 
 var switchHolder = 0;
-function drawGroupedColumnChart(C1M1,C1M2,C1M3,C2M1,C2M2,C2M3,C3M1,C3M2,C3M3) {
+function drawGroupedColumnChart(C1M1,C1M2,C1M3,C2M1,C2M2,C2M3,C3M1,C3M2,C3M3,switchBool) {
 
+	if(switchBool == true)//if switch clicked
+	{
+		if(switchHolder == 0) {switchHolder=1;}//Switch functionality
+		else if(switchHolder == 1) {switchHolder=0;}
+	}
 
-	if(switchHolder == 0) {switchHolder=1;}//Switch functionality
-	else if(switchHolder == 1) {switchHolder=0;}
 
 
 	console.log(switchHolder);
@@ -205,7 +208,7 @@ function HandleFinishedSelects()
 	}
 	
 
-	function submitSelectsAndDrawChart(){
+	function submitSelectsAndDrawChart(switchBool){
 		
 		var select1val = document.getElementById("selectToFill1").value;
 		var select2val = document.getElementById("selectToFill2").value;
@@ -268,7 +271,7 @@ function HandleFinishedSelects()
 		C3M3 = C3M3.responseJSON;
 
 		//draw column chart using above values
-		drawGroupedColumnChart(C1M1,C1M2,C1M3,C2M1,C2M2,C2M3,C3M1,C3M2,C3M3);	
+		drawGroupedColumnChart(C1M1,C1M2,C1M3,C2M1,C2M2,C2M3,C3M1,C3M2,C3M3,switchBool);	
 	}
 
 	//on window load, hide switch axis button for now
