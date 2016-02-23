@@ -35,7 +35,7 @@ if(!empty($_GET)){
 		if($whereClause == 'custom')
 		{
 			if(ISSET($_GET['searchField'])){$searchField=$_GET['searchField'];} else {$searchField="visit_date";}
-			if(ISSET($_GET['and'])){$searchField=$_GET['and'];} else {$and=" ";}
+			if(ISSET($_GET['and'])){$and=$_GET['and'];} else {$and=" ";}
 			if(!ISSET($_GET['join'])) { //not using join
 				if(ISSET($_GET['select'])) {
 					$selectVal = $_GET['select'];
