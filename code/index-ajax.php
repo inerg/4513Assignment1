@@ -32,6 +32,7 @@
 					<div class="card-panel pink lighten-2 CardThree z-depth-2">
 						<div class="white blue-grey-text text-darken-4 card-inner-content" id="continents">
 							<h1 class="card-header">Visitors by Continents</h1><br/>
+
                                 <div class="input-field col s7" id="continent">
                                     <select  class="btn pink lighten-2 dropdown-button-widths change" name="continent">
 
@@ -40,15 +41,11 @@
                                         ?>
 
                                     </select>
+									<table class="striped highlight responsive-table table-hover-continents" id="countries">
+									</table>
                                 </div>
 
-
-                                <?php
-								if(ISSET($_GET['continent']))
-								{
-                                    $continentGate->printVisitList($_GET['continent']);
-                                }
-								?>
+							<table></table>
 						</div>
 					</div><!--/CardThree: Continents-->
 				</div><!--/Row 2: Column 1: Column 1.A-->
