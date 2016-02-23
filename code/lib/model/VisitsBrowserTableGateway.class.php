@@ -27,7 +27,7 @@ class VisitsBrowserTableGateway extends TableDataGateway
    }
 	
 	public function getVisitInfo($searchParameters) {
-        error_log(@$searchParameters);
+        error_log($searchParameters);
 		$sql = 'SELECT	visit_date
                         ,visit_time
                         ,ip_address
@@ -47,6 +47,8 @@ class VisitsBrowserTableGateway extends TableDataGateway
                          '. $searchParameters. '
                           ORDER BY visit_date, visit_time  LIMIT 100';
 
+
+        error_log($sql);
 		//convert records to array
 		$result = $this->dbAdapter->fetchAsArray($sql, null);
 
