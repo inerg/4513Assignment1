@@ -78,11 +78,11 @@ function displayContinentVisitData(visitsArray) {
 
     var th = document.createElement("th");
     th.setAttribute("data-field", "id");
-    th.text("Countries");
+    th.innerHTML("Countries");
     row.appendChild(th);
     th = document.createElement("th");
     th.setAttribute("data-field", "name");
-    th.text("Visitor Count");
+    th.innerHTML("Visitor Count");
     row.appendChild(th);
 
     tableHead.appendChild(row);
@@ -95,13 +95,13 @@ function displayContinentVisitData(visitsArray) {
     {
         var row = document.createElement("tr");
         var column = document.createElement("td");
-        column.text = visitsArray[i].CountryName;
+        column.innerHTML = visitsArray[i].CountryName;
 
         row.appendChild(column);
 
         column = document.createElement("td");
         column.addClass("pink-text text-darken-1 bold");
-        column.text = visitsArray[i].VisitCount;
+        column.innerHTML = visitsArray[i].VisitCount;
 
         row.appendChild(column);
 
