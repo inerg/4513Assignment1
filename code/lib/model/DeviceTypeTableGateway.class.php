@@ -40,7 +40,7 @@ class DeviceTypeTableGateway extends TableDataGateway
         return $result;
     }
 
-    public function displaySelect()
+    public function printDeviceTypeDropdown()
     {
         $deviceTypeList = $this->getDeviceTypes();
         echo '<select class="btn teal lighten-2 brand-button change dropdown-button-widths">';

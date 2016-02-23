@@ -10,6 +10,7 @@
                     <br/><h1 class="card-header center">Visit Browser</h1><br/>
                     <?php
                         $deviceBrandGate->printBrandDropdown();
+                        $deviceTypes->printDeviceTypeDropdown();
                     ?>
                     <input type="button" id="submit">Submit</button>
                 </div>
