@@ -1,13 +1,13 @@
 window.onload=function(){
 
 
- var items = document.getElementsByClassName('.change');
+ var items = document.getElementsByClassName('change');
     for(var i = 0; i < items.length; i++)
     {
-        items[i].addEventListener("change", listen)
+        items[i].addEventListener("change", listen);
     }
 
-function listen() {
+function listen(e) {
 
     var id = e.target.parentNode.getAttribute("id");
     var div;
@@ -75,10 +75,13 @@ function displayContinentVisitData(visitsArray) {
     table.className = "striped highlight responsive-table table-hover-continents";
     var tableHead = document.createElement("thead");
     var row = document.createElement("tr");
-    row.appendChild(document.createElement("th").setAttribute("data-field", "id").innerHTML("Countries"));
-    row.appendChild(document.createElement("th").setAttribute("data-field", "name").innerHTML("Visitor Count"));
 
-    tableHead.appendChild(row)
+    var th = document.createElement("th").setAttribute("data-field", "id").innerHTML("Countries");
+    row.appendChild(th);
+    th = document.createElement("th").setAttribute("data-field", "name").innerHTML("Visitor Count");
+    row.appendChild(th);
+
+    tableHead.appendChild(row);
     table.appendChild(tableHead);
 
     var tableBody = document.createElement("tbody");
