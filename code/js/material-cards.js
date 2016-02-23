@@ -1,7 +1,11 @@
 window.onload=function(){
 
 
-document.querySelectorAll('.change').addEventListener("change", listen());
+ var items = document.querySelectorAll('.change');
+    for(var i = 0; i < items.length; i++)
+    {
+        item[1].addEventListener("change", listen())
+    }
 
 function listen() {
 
