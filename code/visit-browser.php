@@ -43,7 +43,7 @@
                         $osGate->printOSDropdown();
                     echo '</div>';
                     ?>
-                    <a class="waves-effect waves-light btn">Submit</a>
+                    <a class="waves-effect waves-light btn" id="submit">Submit</a>
                 </div>
             </div>
         </div>

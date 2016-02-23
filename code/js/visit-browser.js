@@ -1,6 +1,7 @@
 window.onload=function() {
 
 asyncAJAXRequest();
+    document.querySelector('#submit').addEventListener("click", updateTable);
 // var items = document.getElementsByClassName('change');
 //    for(var i = 0; i < items.length; i++)
 //    {
@@ -34,6 +35,24 @@ asyncAJAXRequest();
 //	asyncAJAXRequest(data, id);
 //}
 //
+function updateTable(){
+    clearModals();
+    clearTable();
+    loadingBar("#VisitInfo");
+    asyncAJAXRequest();
+}
+
+    function clearModals(){
+        var parent = document.querySelector("body");
+        var modals = document.getElementsByClassName("modal");
+        for(var i = 0; i < modals.length; i++){
+            parent.removeChild(modals[i]);
+        }
+    }
+    function clearTable(){
+        var parent = document.querySelector("#VisitInfo");
+        parent.removeChild(document.querySelector("#countries"));
+    }
 function asyncAJAXRequest() {
 	$.ajax({
 		type: "post",
