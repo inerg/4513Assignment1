@@ -106,7 +106,7 @@ function displayVisitData(visitsArray) {
         row.appendChild(column);
 
         column = document.createElement("td");
-        var date = Date(visitsArray[i].visit_time);
+        var date = new Date(visitsArray[i].visit_time);
         column.innerHTML = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
         row.appendChild(column);
 
