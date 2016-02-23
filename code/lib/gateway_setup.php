@@ -4,7 +4,8 @@
 	$browserGate = new VisitTableGateway($dbAdapter);
 	$deviceBrandGate = new DeviceBrandTableGateway($dbAdapter);
 	$continentGate = new ContinentTableGateway($dbAdapter);
-	
+	$deviceTypes = new DeviceTypeTableGateway($dbAdapter);
+
 	$allDeviceBrands = $deviceBrandGate->getDeviceBrands();
 	
 	//$browserStatsTable = $browserGate->displayBrowserStatisticsTable();
