@@ -2,7 +2,7 @@
 /*
   Table Data Gateway for the Browser table.
  */
-class BrowserTableGateway extends TableDataGateway
+class ReferrerTableGateway extends TableDataGateway
 {    
    public function __construct($dbAdapter) 
    {
@@ -11,11 +11,11 @@ class BrowserTableGateway extends TableDataGateway
   
    protected function getDomainObjectClassName()  
    {
-      return "Browser";
+      return "Referrer";
    } 
    protected function getTableName()
    {
-      return "browsers";
+      return "referrers";
    }
    protected function getOrderFields() 
    {
@@ -26,9 +26,9 @@ class BrowserTableGateway extends TableDataGateway
       return "id";
    }
 	
-	public function getBrowsers() {
+	public function getReferrer() {
 		$sql = 'SELECT *
-				FROM browsers
+				FROM referrers
 				LIMIT 100';
 		
 		//convert records to array
@@ -37,23 +37,13 @@ class BrowserTableGateway extends TableDataGateway
 		return $result;
 	}
 	
-	public function getBrowsersByQuery($whereClause, $searchVariable) {
-		$sql = 'SELECT * ' . ' FROM browsers ' .
-				' WHERE ' . $whereClause . ' = "'. $searchVariable . '"';
-		
-		//convert records to array
-		$result = $this->dbAdapter->fetchAsArray($sql, null);
-
-		return $result;
-	}
-
-    public function printBrowserDropdown()
+    public function printReferrerDropdown()
     {
-        $browserList = $this->getBrowsers();
+        $referrerList = $this->getReferrer();
         echo '<div class="input-field col s3">';
         echo '<select class="btn teal lighten-2 brand-button change dropdown-button-widths">';
         echo '<option class="placeholder white-text blue darken-1" selected disabled value="">Browser</option>';
-        foreach ($browserList as $currentType) {
+        foreach ($referrerList as $currentType) {
             echo '<option value="' . $currentType['id'] . '">' . $currentType['name'] . '</option>';
         }
         echo '</select>';

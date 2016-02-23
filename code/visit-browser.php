@@ -20,7 +20,7 @@
                 <div class="white blue-grey-text text-darken-4 card-inner-content">
                     <h2 class="card-header center">Filters</h2>
                     <div class="row">
-                        <div class="input-field" col s3">
+                        <div class="input-field col s12">
                             <input type="text" id="country">
                         </div>
                     </div>
@@ -33,6 +33,9 @@
                     echo '</div>';
                     echo '<div class="row">';
                         $actualBrowserGate->printBrowserDropdown();
+                    echo '</div>';
+                    echo '<div class="row">';
+                        $referrerGate->printReferrerDropdown();
                     echo '</div>';
                     ?>
                     <a class="waves-effect waves-light btn">Submit</a>
