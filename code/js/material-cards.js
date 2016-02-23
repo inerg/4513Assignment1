@@ -21,7 +21,7 @@ function listen(e) {
     }
     else{
         if(id == "continent"){
-            loadingBar('#countries');
+            loadingBar('#continent');
             div = document.querySelector('#countries').parentNode;
             toRemove = document.querySelector("#countries");
             data = {continent: e.target.value};
@@ -117,7 +117,7 @@ function displayContinentVisitData(visitsArray) {
     var select = document.querySelector("#continent");
     select.parentNode.appendChild(table);
 
-    $('#' + select.parentNode.id + "> .progress").hide();
+    $('#continent > .progress').hide();
 
 };}
 function loadingBar(id){
