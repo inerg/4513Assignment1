@@ -162,13 +162,24 @@ function HandleFinishedSelects()
 	}
 	
 	function submitSelects(){
-		console.log("hit");	
+		
+		var select1 = document.getElementById("selectToFill1");
+		var select2 = document.getElementById("selectToFill2");
+		var select3 = document.getElementById("selectToFill3");
+		
+		console.log(select1.value);	
+		
+		//Call for chart data () 
+	$.getJSON('lib/serviceVisits.php?custom=-01-&select=CountryName,COUNT(id)%20AS%20count&join=countries%20ON%20visits.country_code=countries.ISO&groupBy=country_code&having=COUNT(country_code)>=10',
+        function(data) {
+			drawGroupedColumnChart(data);
+        });
 	}
 
 	
 	
 	
-	
+	//Grabs data necessary for output of Column selects
 	$.getJSON('lib/serviceVisits.php?custom=%&select=COUNT(CountryName)%20AS%20count,CountryName,country_code,ISO&join=countries%20ON%20visits.country_code=countries.ISO&groupBy=CountryName%20order%20by%20count%20desc%20limit%2010',
         function(data) {
 			outputColSelect(data);
