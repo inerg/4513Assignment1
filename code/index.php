@@ -56,23 +56,6 @@
 
                                         <?php
                                             $continentGate->printContinentDropdown(trim($_GET['continent']));
-
-										$sql = 'SELECT	visit_date,
- 														visit_time,
- 														ip_address,
- 														CountryName,
- 														b.name AS BrowserName,
- 														r.name AS ReferrerName,
- 														os.name AS OSName,
- 														dt.name AS DTName
- 														FROM visits v
- 														INNER JOIN countries c ON c.ISO = v.country_code
- 														INNER JOIN browsers b ON b.ID = v.browser_id
- 														INNER JOIN referrers r ON r.id = v.referrer_id
- 														INNER JOIN operating_systems os ON os.ID = v.os_id
- 														INNER JOIN device_types dt ON dt.ID = v.device_type_id  LIMIT 100;
-
-'
                                         ?>
 
                                     </select>
