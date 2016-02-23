@@ -25,8 +25,9 @@ function outputSelectedMonthVisitsChart(JSONdata) {
 	//Take the data table and make it a google chart, and then draw the chart to screen
 	var chart = new google.visualization.AreaChart(document.getElementById('card1'));
 	chart.draw(data, options); 
+	
+	document.getElementById('spinner2').style.visibility = "hidden";
 }
-
 
 
 
@@ -56,6 +57,8 @@ function outputGeoVisitsChart(JSONdata) {
 	//Create google geochart from table, then draw it.
 	var chart = new google.visualization.GeoChart(document.getElementById('parent1'));
 	chart.draw(data2, options);		
+
+	document.getElementById('spinner').style.visibility = "hidden";
 }
 
 

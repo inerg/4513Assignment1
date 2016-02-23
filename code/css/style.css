@@ -1,5 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Muli:300);
 
+
+
+.spinner {
+
+display: block;
+    margin-left: auto;
+    margin-right: auto;
+	vertical-align: middle;
+}
+
 .bold {
 	font-weight: bold;
 }
