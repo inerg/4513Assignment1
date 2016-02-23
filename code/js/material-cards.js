@@ -14,12 +14,14 @@ function listen(e) {
     var toRemove;
     var data;
     if(id == "brands"){
+        loadingBar('#brands');
         div = document.querySelector('#brands');
         toRemove = document.querySelector("p#p");
         data = {brand: e.target.value};
     }
     else{
         if(id == "continent"){
+            loadingBar('#continent');
             div = document.querySelector('#countries').parentNode;
             toRemove = document.querySelector("#countries");
             data = {continent: e.target.value};
@@ -67,6 +69,7 @@ function displayBrandVisitData(visitsArray) {
 	var select = document.querySelector("Select");
 	
 	select.parentNode.insertBefore(para, select.nextSibling);
+    $('#' + select.parentNode.id + "> .progress").hide();
 }
 
 function displayContinentVisitData(visitsArray) {
@@ -110,8 +113,19 @@ function displayContinentVisitData(visitsArray) {
     }
 
     table.appendChild(tableBody);
-    var select = document.querySelector("#continent");
 
+    var select = document.querySelector("#continent");
     select.parentNode.appendChild(table);
 
+    $('#continent > .progress').hide();
+
 };}
+function loadingBar(id){
+    var divProgress = document.createElement("div");
+    divProgress.className = "progress";
+    var div = document.createElement("div");
+    div.className =  "indeterminate";
+    divProgress.appendChild(div);
+
+    document.querySelector(id).appendChild(divProgress)
+}
