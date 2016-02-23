@@ -19,8 +19,11 @@ session_start();
 			<div class="row">
 			  <div class="col s12">
 				<div class="card-panel orange lighten-2 cardOne z-depth-2">
+				
 				  <div class="white blue-grey-text text-darken-4 card-inner-content">
+					
 					<div>
+					
 						<select  class="btn orange lighten-2 dropdown-button-widths" name="continent" onchange="handleMonthChangeRedraw(this.value, 'visitChart')">
 							<option selected disabled>Select a Month</option>
 							<option value="01">January</option>
@@ -38,7 +41,7 @@ session_start();
 						</select>
 					</div>
 					<div id="card1">
-						
+						<img alt="Inline image 3" src="spinner/spinner.gif" height="80" width="80" class="spinner" id="spinner2">
 					</div>
 				  </div>
 				</div><!--/cardOne: Monthly Visits Chart -->
@@ -63,7 +66,9 @@ session_start();
 							<option value="11">November</option>
 							<option value="12">December</option>
 						</select></div>
+				  
 				  <div id="parent1"></div>
+					<img alt="Inline image 3" src="spinner/spinner.gif" height="80" width="80" class="spinner" id="spinner">
 				  </div>
 				</div><!--/cardTwo: Geo Chart-->
 			  </div>
