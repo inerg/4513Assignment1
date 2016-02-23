@@ -169,7 +169,7 @@ function displayVisitData(visitsArray) {
 
         tableBody.appendChild(row);
 
-        $('##VisitInfo' + '> .progress').hide();
+        $('#VisitInfo' + '> .progress').hide();
     }
 
     table.appendChild(tableBody);
