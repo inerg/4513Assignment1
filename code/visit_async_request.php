@@ -18,6 +18,10 @@ if(isset($_REQUEST['browser']) && !empty($_REQUEST['browser'])){
     $query.'browser_id = \''.$_REQUEST['browser'].'\' ';
 }
 //    $passedValue = $_REQUEST['brand'];
+if($query == "WHERE ")
+{
+    $query = "";
+}
     
 	$gate = new VisitsBrowserTableGateway($dbAdapter);
 	$result = $gate->getVisitInfo($query);
