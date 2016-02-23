@@ -50,7 +50,7 @@ function updateTable(){
         }
     }
     function clearTable(){
-        var parent = document.querySelector("#VisitInfo");
+        var parent = document.querySelector("#VisitInfo").parentNode;
         parent.removeChild(document.querySelector("#countries"));
     }
 function asyncAJAXRequest() {
