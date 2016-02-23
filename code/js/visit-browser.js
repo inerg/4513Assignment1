@@ -38,15 +38,43 @@ asyncAJAXRequest("");
 function updateTable(){
 
         var brand = document.querySelector('#brand');
-        brand = brand.options[brand.selectedIndex].value;
+        if("false".localeCompare(brand.options[brand.selectedIndex].value)) {
+            brand = brand.options[brand.selectedIndex].value;
+        }
+    else
+        brand = "";
         var os = document.querySelector('#os');
-        os = os.options[os.selectedIndex].value;
+        if("false".localeCompare(os.options[os.selectedIndex].value)) {
+            os = os.options[os.selectedIndex].value;
+        }
+    else
+        {
+            os = "";
+        }
         var dt = document.querySelector('#dt');
-        dt = dt.options[dt.selectedIndex].value;
+        if("false".localeCompare(dt.options[dt.selectedIndex].value)) {
+            dt = dt.options[dt.selectedIndex].value;
+        }
+    else
+        {
+            dt = "";
+        }
         var referrer = document.querySelector('#referrer');
-        referrer = referrer.options[referrer.selectedIndex].value;
+        if("false".localeCompare(referrer.options[referrer.selectedIndex].value)) {
+            referrer = referrer.options[referrer.selectedIndex].value;
+        }
+    else
+        {
+            referrer = "";
+        }
         var browser = document.querySelector('#browser');
-        browser = browser.options[browser.selectedIndex].value
+        if("false".localeCompare(browser.options[browser.selectedIndex].value)) {
+            browser = browser.options[browser.selectedIndex].value;
+        }
+        else
+        {
+            browser = "";
+        }
 
         data = {brand: brand, os: os, dt: dt, referrer: referrer, browser: browser};
         //console.log(div.options[div.selectedIndex].value);
