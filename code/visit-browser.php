@@ -20,7 +20,9 @@
                 <div class="white blue-grey-text text-darken-4 card-inner-content">
                     <h2 class="card-header center">Filters</h2>
                     <div class="row">
-                        <input type="text" id="country">
+                        <div class="input-field" col s3">
+                            <input type="text" id="country">
+                        </div>
                     </div>
                     <?php
                     echo '<div class="row">';
@@ -28,6 +30,9 @@
                     echo '</div>';
                     echo '<div class="row">';
                         $deviceTypes->printDeviceTypeDropdown();
+                    echo '</div>';
+                    echo '<div class="row">';
+                        $browserGate->printBrowserDropdown();
                     echo '</div>';
                     ?>
                     <a class="waves-effect waves-light btn">Submit</a>
