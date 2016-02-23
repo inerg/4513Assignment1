@@ -2,8 +2,8 @@
 
 require_once('lib/helpers/visits-setup.inc.php');
 
-if(isset($_POST['brand']) && !empty($_POST['brand'])) {
-    $passedValue = $_POST['brand'];
+if(isset($_REQUEST['brand']) && !empty($_REQUEST['brand'])) {
+    $passedValue = $_REQUEST['brand'];
     
 	$gate = new DeviceBrandTableGateway($dbAdapter);
 	$result = $gate->getBrandVisits($passedValue);
@@ -14,9 +14,9 @@ if(isset($_POST['brand']) && !empty($_POST['brand'])) {
 	}
 else
 {
-    if(isset($_POST['continent']) && !empty($_POST['continent']))
+    if(isset($_REQUEST['continent']) && !empty($_REQUEST['continent']))
     {
-        $passedValue = $_POST['continent'];
+        $passedValue = $_REQUEST['continent'];
 
         $continentGate = new ContinentTableGateway($dbAdapter);
         $result = $continentGate->getVisitsByContinentCode($passedValue);
