@@ -39,12 +39,12 @@ function updateTable(){
 
     //if(id == "brands")
     {
-        var div = document.querySelector('#brands');
+        var div = document.querySelector('#brand');
         console.log(div.options[div.selectedIndex].value);
     }
     //if(id == "continent")
     {
-        var div = document.querySelector('#brand');
+        var div = document.querySelector('#os');
         console.log(div.options[div.selectedIndex].value);
         //loadingBar('#continent');
         //div = document.querySelector('#countries').parentNode;

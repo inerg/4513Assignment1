@@ -41,7 +41,7 @@ class OperatingSystemTableGateway extends TableDataGateway
     {
         $osList = $this->getOperatingSystems();
         echo '<div class="input-field col s3">';
-        echo '<select class="btn teal lighten-2 brand-button change dropdown-button-widths" name="os">';
+        echo '<select class="btn teal lighten-2 brand-button change dropdown-button-widths" id="os">';
         echo '<option class="placeholder white-text blue darken-1" selected disabled value="">Operating System</option>';
         foreach ($osList as $currentType) {
             echo '<option value="' . $currentType['ID'] . '">' . $currentType['name'] . '</option>';
