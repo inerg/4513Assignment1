@@ -22,6 +22,7 @@ class VisitTableGateway extends TableDataGateway
    protected function getPrimaryKeyName() {
       return "id";
    }
+
    
    
    public function getVisitsByBrowser($browser)
@@ -40,6 +41,8 @@ class VisitTableGateway extends TableDataGateway
 		return $numResult;
 
 	}
+
+
 	
 	public function getListOfBrowsers() {
 		

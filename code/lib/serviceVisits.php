@@ -25,6 +25,8 @@ header('Access-Control-Allow-Origin: *');
 //Process Client Request 
 $visitorGate = new VisitTableGateway($dbAdapter);
 
+
+
 if(!empty($_GET)){
 	$validCriteria = isCorrectQueryStringInfo($_GET, "visits");
 
