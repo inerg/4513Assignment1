@@ -223,9 +223,109 @@ function buildModal(info, id){
     var tempDiv = document.createElement("div");
     tempDiv.className = "modal-content";
     var modalHeader = document.createElement("h4");
-    modalHeader.innerHTML = info.ip_address;
+    modalHeader.innerHTML = "Detailed Info";
     tempDiv.appendChild(modalHeader);
     //fill it with things here
+
+
+
+
+
+
+
+
+    var table = document.createElement("table");
+    table.id = "countries";
+    table.className = "striped highlight responsive-table table-hover-continents";
+    var tableHead = document.createElement("thead");
+    var row = document.createElement("tr");
+
+    var th = document.createElement("th");
+    th.innerHTML = "Visit Date";
+    row.appendChild(th);
+
+    th = document.createElement("th");
+    th.innerHTML = "Visit Time";
+    row.appendChild(th);
+
+    th = document.createElement("th");
+    th.innerHTML = "IP Address";
+    row.appendChild(th);
+
+    th = document.createElement("th");
+    th.innerHTML = "Country Name";
+    row.appendChild(th);
+
+    th = document.createElement("th");
+    th.innerHTML = "Browser Name";
+    row.appendChild(th);
+
+    th = document.createElement("th");
+    th.innerHTML = "Referrer";
+    row.appendChild(th);
+
+    th = document.createElement("th");
+    th.innerHTML = "Operating System";
+    row.appendChild(th);
+
+    th = document.createElement("th");
+    th.innerHTML = "Brand";
+    row.appendChild(th);
+
+    th = document.createElement("th");
+    th.innerHTML = "Device Type";
+    row.appendChild(th);
+
+    tableHead.appendChild(row);
+    table.appendChild(tableHead);
+
+    var tableBody = document.createElement("tbody");
+    //table body/
+
+    var row = document.createElement("tr");
+    var column = document.createElement("td");
+    column.innerHTML = info.visit_date;
+    row.appendChild(column);
+
+    column = document.createElement("td");
+    //var date = new Date(visitsArray[i].visit_time);
+    //column.innerHTML = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    column.innerHTML = info.visit_time;
+    row.appendChild(column);
+
+    column = document.createElement("td");
+    column.innerHTML = info.ip_address;
+    row.appendChild(column);
+
+    column = document.createElement("td");
+    column.innerHTML = info.CountryName;
+    row.appendChild(column);
+
+    column = document.createElement("td");
+    column.innerHTML = info.BrowserName;
+    row.appendChild(column);
+
+    column = document.createElement("td");
+    column.innerHTML = info.ReferrerName;
+    row.appendChild(column);
+
+    column = document.createElement("td");
+    column.innerHTML = info.OSName;
+    row.appendChild(column);
+
+    column = document.createElement("td");
+    column.innerHTML = info.BrandName;
+    row.appendChild(column);
+
+    column = document.createElement("td");
+    column.innerHTML = info.DTName;
+    row.appendChild(column);
+
+    tableBody.appendChild(row);
+
+    table.appendChild(tableBody);
+
+    tempDiv.appendChild(table);
 
     div.appendChild(tempDiv);
 
