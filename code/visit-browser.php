@@ -22,7 +22,7 @@
                     <h2 class="card-header center">Filters</h2>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" placeholder="Enter Country" autofocus class="awesomplete" list="countryList">
+                            <input type="text" placeholder="Enter Country" autofocus class="awesomplete" list="countryList" id="country">
                             <?php
                                 $countryGate->printCountryOptions();
                             ?>
