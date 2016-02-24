@@ -37,46 +37,48 @@ asyncAJAXRequest("");
 //
 function updateTable(){
 
-        var brand = document.querySelector('#brand');
-        if("false".localeCompare(brand.options[brand.selectedIndex].value)) {
-            brand = brand.options[brand.selectedIndex].value;
-        }
+    var brand = document.querySelector('#brand');
+    if("false".localeCompare(brand.options[brand.selectedIndex].value)) {
+        brand = brand.options[brand.selectedIndex].value;
+    }
     else
-        brand = "";
-        var os = document.querySelector('#os');
-        if("false".localeCompare(os.options[os.selectedIndex].value)) {
-            os = os.options[os.selectedIndex].value;
-        }
+    brand = "";
+    var os = document.querySelector('#os');
+    if("false".localeCompare(os.options[os.selectedIndex].value)) {
+        os = os.options[os.selectedIndex].value;
+    }
     else
-        {
-            os = "";
-        }
-        var dt = document.querySelector('#dt');
-        if("false".localeCompare(dt.options[dt.selectedIndex].value)) {
-            dt = dt.options[dt.selectedIndex].value;
-        }
+    {
+        os = "";
+    }
+    var dt = document.querySelector('#dt');
+    if("false".localeCompare(dt.options[dt.selectedIndex].value)) {
+        dt = dt.options[dt.selectedIndex].value;
+    }
     else
-        {
-            dt = "";
-        }
-        var referrer = document.querySelector('#referrer');
-        if("false".localeCompare(referrer.options[referrer.selectedIndex].value)) {
-            referrer = referrer.options[referrer.selectedIndex].value;
-        }
+    {
+        dt = "";
+    }
+    var referrer = document.querySelector('#referrer');
+    if("false".localeCompare(referrer.options[referrer.selectedIndex].value)) {
+        referrer = referrer.options[referrer.selectedIndex].value;
+    }
     else
-        {
-            referrer = "";
-        }
-        var browser = document.querySelector('#browser');
-        if("false".localeCompare(browser.options[browser.selectedIndex].value)) {
-            browser = browser.options[browser.selectedIndex].value;
-        }
-        else
-        {
-            browser = "";
-        }
+    {
+        referrer = "";
+    }
+    var browser = document.querySelector('#browser');
+    if("false".localeCompare(browser.options[browser.selectedIndex].value)) {
+        browser = browser.options[browser.selectedIndex].value;
+    }
+    else
+    {
+        browser = "";
+    }
+    var country = document.querySelector('#country');
+    country = country.value;
 
-        data = {brand: brand, os: os, dt: dt, referrer: referrer, browser: browser};
+        data = {brand: brand, os: os, dt: dt, referrer: referrer, browser: browser, country: country};
         //console.log(div.options[div.selectedIndex].value);
         //console.log(div.options[div.selectedIndex].value);
 

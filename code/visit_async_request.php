@@ -51,6 +51,16 @@ if(isset($_REQUEST['browser']) && !empty($_REQUEST['browser'])){
     }
 
 }
+if(isset($_REQUEST['country']) && !empty($_REQUEST['country'])){
+    if(!isset($query)){
+        $query = 'WHERE c.CountryName = \''.$_REQUEST['country'].'\' ';
+    }
+    else
+    {
+        $query.' AND c.CountryName = \''.$_REQUEST['country'].'\' ';
+    }
+
+}
 //    $passedValue = $_REQUEST['brand'];
 //if(strcmp($query,"WHERE ") == 0)
 //{
