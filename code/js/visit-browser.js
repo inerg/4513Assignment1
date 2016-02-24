@@ -83,6 +83,7 @@ function updateTable(){
     }
     var country = document.querySelector('#country');
     country = country.value;
+    country = country.replace('\"', "")
 
         data = {brand: brand, os: os, dt: dt, referrer: referrer, browser: browser, country: country};
         //console.log(div.options[div.selectedIndex].value);
