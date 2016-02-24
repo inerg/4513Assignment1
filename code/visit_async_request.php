@@ -4,7 +4,6 @@ require_once('lib/helpers/visits-setup.inc.php');
 $query = null;
 if(isset($_REQUEST['brand']) && !empty($_REQUEST['brand'])) {
     error_log('brand');
-    error_log(isset($query));
     if(!isset($query)){
         $query = 'WHERE db.name = \''.$_REQUEST['brand'].'\' ';
     }
@@ -16,14 +15,13 @@ if(isset($_REQUEST['brand']) && !empty($_REQUEST['brand'])) {
 
 if(isset($_REQUEST['referrer']) && !empty($_REQUEST['referrer'])){
     error_log('referrer');
-    error_log(isset($query));
-    if(!isset($query))
+    if(isset($query) != 1)
     {
         $query = 'WHERE referrer_id = \''.$_REQUEST['referrer'].'\' ';
     }
     else
     {
-        $query.' AND referrer_id = \''.$_REQUEST['referrer'].'\' ';
+        $query = $query.' AND referrer_id = \''.$_REQUEST['referrer'].'\' ';
     }
 
 }
@@ -34,7 +32,7 @@ if(isset($_REQUEST['os']) && !empty($_REQUEST['os'])) {
     }
     else
     {
-        $query.' AND os_id = \''.$_REQUEST['os'].'\' ';
+        $query = $query.' AND os_id = \''.$_REQUEST['os'].'\' ';
     }
 
 }
@@ -45,7 +43,7 @@ if(isset($_REQUEST['dt']) && !empty($_REQUEST['dt'])) {
     }
     else
     {
-        $query.' AND device_type_id = \''.$_REQUEST['dt'].'\' ';
+        $query = $query.' AND device_type_id = \''.$_REQUEST['dt'].'\' ';
     }
 }
 if(isset($_REQUEST['browser']) && !empty($_REQUEST['browser'])){
@@ -55,7 +53,7 @@ if(isset($_REQUEST['browser']) && !empty($_REQUEST['browser'])){
     }
     else
     {
-        $query.' AND browser_id = \''.$_REQUEST['browser'].'\' ';
+        $query = $query.' AND browser_id = \''.$_REQUEST['browser'].'\' ';
     }
 
 }
@@ -66,7 +64,7 @@ if(isset($_REQUEST['country']) && !empty($_REQUEST['country'])){
     }
     else
     {
-        $query.' AND c.CountryName = \''.$_REQUEST['country'].'\' ';
+        $query = $query.' AND c.CountryName = \''.$_REQUEST['country'].'\' ';
     }
 
 }
