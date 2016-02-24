@@ -63,7 +63,7 @@ class DeviceBrandTableGateway extends TableDataGateway
     {
 		echo '<div class="input-field col s3">';
 		$holder = "('brandSelect')";
-		echo '<select id="brand" class="btn teal lighten-2 dropdown-button-widths" name="brand" onchange="formChange'.$holder.'">';
+		echo '<select id="brand" class="btn teal lighten-2 dropdown-button-widths change" name="brand" onchange="formChange'.$holder.'">';
 		
         if($selectedBrand == null) {
             echo '<option class="placeholder white-text teal darken-1" selected value="false">Select Brand</option>';

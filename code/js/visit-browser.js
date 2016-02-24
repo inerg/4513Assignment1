@@ -1,7 +1,13 @@
 window.onload=function() {
 
 asyncAJAXRequest("");
-    document.querySelector('#submit').addEventListener("click", updateTable);
+   // document.querySelector('#submit').addEventListener("click", updateTable);
+
+    var items = document.getElementsByClassName('change');
+    for(var i = 0; i < items.length; i++)
+    {
+        items[i].addEventListener("change", updateTable);
+    }
 // var items = document.getElementsByClassName('change');
 //    for(var i = 0; i < items.length; i++)
 //    {
