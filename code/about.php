@@ -24,6 +24,7 @@
 						<li class="collection-item"><a href="https://jquery.com/">jQuery</a></li>
 						<li class="collection-item"><a href="https://design.google.com/icons/">Google Icons</a></li>
 						<li class="collection-item"><a href="http://www.favicon.cc/">Favicon Generator</a></li>
+						<li class="collection-item"><a href="https://leaverou.github.io/awesomplete/">Awesomeplete for the auto complete</a></li>
 					</ul>
 				</div>
 			</div>
