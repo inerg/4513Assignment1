@@ -139,6 +139,7 @@ function asyncAJAXRequest(data) {
 //    $('#' + select.parentNode.id + "> .progress").hide();
 //}
 }
+
 function displayVisitData(visitsArray) {
     var table = document.createElement("table");
     table.id = "countries";
@@ -198,7 +199,7 @@ function displayVisitData(visitsArray) {
         var modal = document.createElement("a");
         modal.setAttribute("href","#modal" + i);
         modal.setAttribute("target","_self");
-        modal.className = "btn modal-trigger waves-light waves-effect";
+        modal.className = "btn modal-trigger waves-light waves-effect white-text pink lighten-2";
         modal.innerHTML = "Info";
         column.appendChild(modal);
         buildModal(visitsArray[i], i);
@@ -212,8 +213,8 @@ function displayVisitData(visitsArray) {
 
     table.appendChild(tableBody);
 
-    var select = document.querySelector("#VisitInfo");
-    select.parentNode.appendChild(table);
+    var selectT = document.querySelector("#VisitInfo");
+    selectT.appendChild(table);
 
 
     $(document).ready(function(){
@@ -232,6 +233,7 @@ function buildModal(info, id){
     var tempDiv = document.createElement("div");
     tempDiv.className = "modal-content";
     var modalHeader = document.createElement("h4");
+	modalHeader.className = "modal-title";
     modalHeader.innerHTML = "Detailed Info";
     tempDiv.appendChild(modalHeader);
     //fill it with things here
@@ -348,6 +350,7 @@ function buildModal(info, id){
     div.appendChild(tempDiv);
     document.querySelector("body").appendChild(div);
 }
+
 function loadingBar(id){
     var divProgress = document.createElement("div");
     divProgress.className = "progress";

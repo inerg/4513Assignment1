@@ -21,11 +21,10 @@ session_start();
 				<div class="card-panel orange lighten-2 cardOne z-depth-2">
 				
 				  <div class="white blue-grey-text text-darken-4 card-inner-content">
-					
 					<div>
-					
+						<h1 class="card-header">Site Visits: By Month</h1><br/>
 						<select  class="btn orange lighten-2 dropdown-button-widths" name="continent" onchange="handleMonthChangeRedraw(this.value, 'visitChart')">
-							<option selected disabled>Select a Month</option>
+							<option class="orange darken-1 white-text" selected disabled>Select a Month</option>
 							<option value="01">January</option>
 							<option value="02">February</option>
 							<option value="03">March</option>
@@ -49,10 +48,11 @@ session_start();
 			  
 			  <div class="col s12">
 				<div class="card-panel teal lighten-2 cardTwo z-depth-2">
-				  <div class=" white blue-grey-text text-darken-4 card-inner-content">
-				  <div>
-				  <select class="btn teal lighten-2 dropdown-button-widths" name="continent" onchange="handleMonthChangeRedraw(this.value, 'countryVisitChart')">
-							<option selected disabled>Select a Month</option>
+					<div class="white blue-grey-text text-darken-4 card-inner-content">
+					<div>
+						<h1 class="card-header">International Site Visits: By Month</h1><br/>
+						<select class="btn teal lighten-2 dropdown-button-widths" name="continent" onchange="handleMonthChangeRedraw(this.value, 'countryVisitChart')">
+							<option class="teal darken-1 white-text" selected disabled>Select a Month</option>
 							<option value="01">January</option>
 							<option value="02">February</option>
 							<option value="03">March</option>
@@ -65,8 +65,8 @@ session_start();
 							<option value="10">October</option>
 							<option value="11">November</option>
 							<option value="12">December</option>
-						</select></div>
-				  
+						</select>
+					</div>
 				  <div id="parent1"></div>
 					<img alt="Inline image 3" src="spinner/spinner.gif" height="80" width="80" class="spinner" id="spinner">
 				  </div>
@@ -82,20 +82,21 @@ session_start();
 						<div class="white blue-grey-text text-darken-4 card-inner-content">
 						
 						<div id="c3d1">
-							
+							<h1 class="card-header">Visit Comparisons: By Countries</h1><br/>
 							<select class="btn pink lighten-2 dropdown-button-widths" name="continent" onchange="HandleFinishedSelects()" id="selectToFill1">
-								<option selected disabled>Select a country</option>
+								<option class="white-text pink darken-1" selected disabled>Select a country</option>
 							</select>
 							<select class="btn pink lighten-2 dropdown-button-widths" name="continent" onchange="HandleFinishedSelects()" id="selectToFill2">
-								<option selected disabled>Select a country</option>
+								<option class="white-text pink darken-1" selected disabled>Select a country</option>
 							</select>
 							<select class="btn pink lighten-2 dropdown-button-widths" name="continent" onchange="HandleFinishedSelects()" id="selectToFill3">
-								<option selected disabled>Select a country</option>
+								<option class="white-text pink darken-1" selected disabled>Select a country</option>
 							</select>
 							</div>
 							<div>
-							<button class="blue waves-effect waves-light btn" onclick="submitSelectsAndDrawChart(false)" id="loadButton">Chart It</button>
-							<button class="blue waves-effect waves-light btn" onclick="submitSelectsAndDrawChart(true)" id="hide">Switch Axis</button></div>
+								<button class="blue waves-effect waves-light btn" onclick="submitSelectsAndDrawChart(false)" id="loadButton">Chart It</button>
+								<button class="blue waves-effect waves-light btn" onclick="submitSelectsAndDrawChart(true)" id="hide">Switch Axis</button>
+							</div>
 						<div id="card3"></div>
 	
 

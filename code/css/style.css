@@ -1,7 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Muli:300);
 
-
-
 .spinner {
 
 display: block;
@@ -96,10 +94,22 @@ nav .brand-logo {
 }
 
 .dropdown-button-widths {
-	width: 300px;	
+	width: 280px;	
 }
 
 .adjust-google-icons {
 	position: relative;
 	top: 5px;
+}
+
+.card-title {
+	color: #FFF;
+}
+
+.modal-title {
+	color: #B71C1C;
+}
+
+#selectToFill1, #selectToFill2, #selectToFill3 {
+	margin-bottom: 10px;
 }

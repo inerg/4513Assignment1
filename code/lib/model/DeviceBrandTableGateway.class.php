@@ -83,7 +83,8 @@ class DeviceBrandTableGateway extends TableDataGateway
 		echo "</div>";
 
     }
-    //Prints the vists for the brand selected.
+    
+	//Prints the vists for the brand selected.
     public function printBrandVists($selectedBrand = null)
     {
         if($selectedBrand != null) {
