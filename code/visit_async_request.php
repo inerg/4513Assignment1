@@ -1,10 +1,11 @@
 <?php
 
 require_once('lib/helpers/visits-setup.inc.php');
-$query;
+$query = null;
 if(isset($_REQUEST['brand']) && !empty($_REQUEST['brand'])) {
     error_log('brand');
-    if(empty($query)){
+    error_log(isset($query));
+    if(!isset($query)){
         $query = 'WHERE db.name = \''.$_REQUEST['brand'].'\' ';
     }
     else
@@ -12,9 +13,11 @@ if(isset($_REQUEST['brand']) && !empty($_REQUEST['brand'])) {
         $query.'db.name = \''.$_REQUEST['brand'].'\' ';
     }
 }
+
 if(isset($_REQUEST['referrer']) && !empty($_REQUEST['referrer'])){
     error_log('referrer');
-    if(empty($query))
+    error_log(isset($query));
+    if(!isset($query))
     {
         $query = 'WHERE referrer_id = \''.$_REQUEST['referrer'].'\' ';
     }
@@ -26,7 +29,7 @@ if(isset($_REQUEST['referrer']) && !empty($_REQUEST['referrer'])){
 }
 if(isset($_REQUEST['os']) && !empty($_REQUEST['os'])) {
     error_log('os');
-    if(empty($query)){
+    if(!isset($query)){
         $query = 'WHERE os_id = \''.$_REQUEST['os'].'\' ';
     }
     else
@@ -37,7 +40,7 @@ if(isset($_REQUEST['os']) && !empty($_REQUEST['os'])) {
 }
 if(isset($_REQUEST['dt']) && !empty($_REQUEST['dt'])) {
     error_log('dt');
-    if(empty($query)){
+    if(!isset($query)){
         $query = 'WHERE device_type_id = \''.$_REQUEST['dt'].'\' ';
     }
     else
@@ -47,7 +50,7 @@ if(isset($_REQUEST['dt']) && !empty($_REQUEST['dt'])) {
 }
 if(isset($_REQUEST['browser']) && !empty($_REQUEST['browser'])){
     error_log('browser');
-    if(empty($query)){
+    if(!isset($query)){
         $query = 'WHERE browser_id = \''.$_REQUEST['browser'].'\' ';
     }
     else
@@ -58,7 +61,7 @@ if(isset($_REQUEST['browser']) && !empty($_REQUEST['browser'])){
 }
 if(isset($_REQUEST['country']) && !empty($_REQUEST['country'])){
     error_log('country');
-    if(empty($query)){
+    if(!isset($query)){
         $query = 'WHERE c.CountryName = \''.$_REQUEST['country'].'\' ';
     }
     else
