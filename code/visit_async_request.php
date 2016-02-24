@@ -1,7 +1,8 @@
 <?php
 
 require_once('lib/helpers/visits-setup.inc.php');
-
+error_log(var_dump($_REQUEST));
+$query;
 if(isset($_REQUEST['brand']) && !empty($_REQUEST['brand'])) {
     error_log('brand');
     if(!isset($query)){
