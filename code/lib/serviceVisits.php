@@ -49,7 +49,7 @@ if(!empty($_GET)){
 					if(ISSET($_GET['having'])) {//if using having
 						if(!ISSET($_GET['groupBy'])) {//and not groupBy
 							$having = $_GET['having'];
-							//echo "used 2";
+							//echo "used 2"; 
 							$results = $visitorGate->getCustomSearch($selectVal, $searchField, $and, $searchVariable, NULL, $having, NULL);
 						}
 					}
