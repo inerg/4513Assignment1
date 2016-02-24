@@ -22,8 +22,8 @@
                     <h2 class="card-header center">Filters</h2>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" id="country">
-                            <label for="country">Country</label>
+                            <input type="text" id="country" autofocus>
+                            <label for="country">Search By Country</label>
                         </div>
                     </div>
                     <?php
