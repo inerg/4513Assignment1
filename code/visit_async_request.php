@@ -4,11 +4,11 @@ require_once('lib/helpers/visits-setup.inc.php');
 $query;
 if(isset($_REQUEST['brand']) && !empty($_REQUEST['brand'])) {
     if(!isset($query)){
-        $query = 'WHERE dt.name = \''.$_REQUEST['brand'].'\' ';
+        $query = 'WHERE db.name = \''.$_REQUEST['brand'].'\' ';
     }
     else
     {
-        $query.'dt.name = \''.$_REQUEST['brand'].'\' ';
+        $query.'db.name = \''.$_REQUEST['brand'].'\' ';
     }
 }
 if(isset($_REQUEST['referrer']) && !empty($_REQUEST['referrer'])){
