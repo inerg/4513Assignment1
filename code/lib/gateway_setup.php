@@ -8,6 +8,7 @@
 	$actualBrowserGate = new BrowserTableGateway($dbAdapter);
 	$referrerGate = new ReferrerTableGateway($dbAdapter);
 	$osGate = new OperatingSystemTableGateway($dbAdapter);
+	$countryGate = new CountriesTableGateway($dbAdapter);
 
 	$allDeviceBrands = $deviceBrandGate->getDeviceBrands();
 	

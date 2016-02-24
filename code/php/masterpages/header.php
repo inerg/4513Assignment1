@@ -12,6 +12,7 @@
 	<!--Css Files-->
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 	<link type="text/css" rel="stylesheet" href="css/style.css">
+	<link type="text/css" rel="stylesheet" href="css/awesomplete.css">
 	<link type="image/x-icon" rel="icon" href="img/favicon.ico">
 
 	<!--Import Google Icon Font-->
@@ -26,6 +27,7 @@
 	<script type="text/javascript" src="js/materialize-modified.js"></script>
 	<script type="text/javascript" src="js/material-cards.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/awesomplete.min.js" async></script>
 
 </head>
 <body>
