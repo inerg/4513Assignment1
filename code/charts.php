@@ -9,7 +9,7 @@ session_start();
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
-<script src="jquery-1.12.0.min.js"></script>
+
 
 
 <!-- Container: Main -->
